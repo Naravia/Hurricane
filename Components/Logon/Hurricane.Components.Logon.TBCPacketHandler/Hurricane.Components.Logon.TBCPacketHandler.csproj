@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0BC7046-1D06-4306-A028-383C35DB4092}</ProjectGuid>
+    <ProjectGuid>{7F99F914-3CCA-4619-9002-2EDFAA1C6465}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hurricane.Shared</RootNamespace>
-    <AssemblyName>Hurricane.Shared</AssemblyName>
+    <RootNamespace>Hurricane.Components.Logon.TBCPacketHandler</RootNamespace>
+    <AssemblyName>Hurricane.Components.Logon.TBCPacketHandler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,29 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\IHurricaneComponent.cs" />
-    <Compile Include="Components\IHurricaneTicker.cs" />
-    <Compile Include="Components\Logon\GameLocaleEnum.cs" />
-    <Compile Include="Components\Logon\GameVersionStruct.cs" />
-    <Compile Include="Components\Logon\ILogonClient.cs" />
-    <Compile Include="Components\Logon\ILogonClientFactory.cs" />
-    <Compile Include="Components\Logon\ILogonPacket.cs" />
-    <Compile Include="Components\Logon\ILogonPacketFactory.cs" />
-    <Compile Include="Components\Logon\ILogonPacketHandler.cs" />
-    <Compile Include="Components\Logon\IPv4AddressStruct.cs" />
-    <Compile Include="Components\Logon\LogonPacketOpcodeEnum.cs" />
-    <Compile Include="Components\Logon\Packets\IPacketAuthLogonChallenge.cs" />
-    <Compile Include="Logging\ILogger.cs" />
-    <Compile Include="Logging\ILogManager.cs" />
-    <Compile Include="Networking\INetworkClient.cs" />
-    <Compile Include="Networking\INetworkHandler.cs" />
-    <Compile Include="Networking\INetworkInterface.cs" />
-    <Compile Include="Networking\INetworkPacket.cs" />
-    <Compile Include="Networking\IPacketFactory.cs" />
-    <Compile Include="Networking\NetworkEventArgs.cs" />
-    <Compile Include="Objects\IHurricaneObject.cs" />
-    <Compile Include="Objects\IHurricaneObjectManager.cs" />
+    <Compile Include="Packets\AuthLogonChallenge.cs" />
+    <Compile Include="Packets\AuthLogonChallengeHandler.cs" />
+    <Compile Include="TBCLogonPacket.cs" />
+    <Compile Include="TBCLogonPacketFactory.cs" />
+    <Compile Include="TBCPacketHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Hurricane.Shared\Hurricane.Shared.csproj">
+      <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
+      <Name>Hurricane.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

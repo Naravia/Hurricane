@@ -60,6 +60,10 @@
       <Project>{04234de4-062a-43d8-b758-d1a3937c4ed6}</Project>
       <Name>Hurricane.Components.Logon.LogonServer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.TBCPacketHandler\Hurricane.Components.Logon.TBCPacketHandler.csproj">
+      <Project>{7f99f914-3cca-4619-9002-2edfaa1c6465}</Project>
+      <Name>Hurricane.Components.Logon.TBCPacketHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>

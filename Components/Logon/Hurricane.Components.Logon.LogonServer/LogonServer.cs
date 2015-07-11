@@ -14,10 +14,14 @@ namespace Hurricane.Components.Logon.LogonServer
         internal static ILogonClientFactory ClientFactory;
         internal static IPacketFactory PacketFactory;
         internal static ILogger Log;
+        internal static ILogonPacketHandler LogonPacketHandler;
+        internal static ILogonPacketFactory LogonPacketFactory;
+
         private readonly INetworkInterface _network;
 
         public LogonServer(ILogger log, INetworkInterface network, IHurricaneObjectManager objectManager,
-            ILogonClientFactory factory, IPacketFactory packetFactory)
+            ILogonClientFactory factory, IPacketFactory packetFactory, ILogonPacketFactory logonPacketFactory,
+            ILogonPacketHandler logonPacketHandler)
         {
             this.ObjectGuid = Guid.NewGuid();
 
@@ -27,6 +31,8 @@ namespace Hurricane.Components.Logon.LogonServer
             ObjectManager = objectManager;
             ClientFactory = factory;
             PacketFactory = packetFactory;
+            LogonPacketFactory = logonPacketFactory;
+            LogonPacketHandler = logonPacketHandler;
         }
 
         public void Initialise()

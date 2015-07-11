@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Hurricane.Shared.Components.Logon;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Components.Logon.LogonServer.Networking
@@ -28,7 +29,17 @@ namespace Hurricane.Components.Logon.LogonServer.Networking
                 sb.Append((Char) b);
             }
             LogonServer.Log.WriteTrace(packet.ObjectGuid, "[{0}]", sb.ToString());
-            
+
+            var logonPacket = LogonServer.LogonPacketHandler.ParseNetworkPacket(packet);
+            LogonServer.Log.WriteDebug(packet.ObjectGuid, "Received packet [opcode: {0}] [error: 0x{1:x2}] [length: {2}]", logonPacket.Opcode, logonPacket.Error, logonPacket.Size);
+
+            switch (LogonServer.LogonPacketHandler.GetOpcodeEnum(opcode: logonPacket.Opcode))
+            {
+                case LogonPacketOpcodeEnum.AuthLogonChallenge:
+                    LogonServer.LogonPacketHandler.HandleAuthLogonChallenge(logonPacket, LogonServer.Log);
+                    break;
+            }
+
             /* Actual packet handling NYI so kick client */
             e.Cancel = true;
         }

@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading;
 using Hurricane.Components.HurricaneTicker;
 using Hurricane.Components.Logon.LogonClient;
+using Hurricane.Components.Logon.TBCPacketHandler;
 using Hurricane.Logging.HurricaneLogger;
 using Hurricane.Networking.HurricaneNetworker;
 using Hurricane.Shared.Components.Logon;
@@ -30,9 +31,12 @@ namespace Hurricane.Binaries.LogonServer
                 log: consoleLogger);
             ILogonClientFactory logonClientFactory = new LogonClientFactory();
             IPacketFactory packetFactory = new PacketFactory();
+            ILogonPacketFactory logonPacketFactory = new TBCLogonPacketFactory();
+            ILogonPacketHandler logonPacketHandler = new TBCPacketHandler();
 
             var logonServer = new Components.Logon.LogonServer.LogonServer(log: consoleLogger, network: networkManager,
-                objectManager: logonClientManager, factory: logonClientFactory, packetFactory: packetFactory);
+                objectManager: logonClientManager, factory: logonClientFactory, packetFactory: packetFactory, logonPacketFactory: logonPacketFactory,
+                logonPacketHandler: logonPacketHandler);
             logonServer.Initialise();
             logonServer.Boot();
 

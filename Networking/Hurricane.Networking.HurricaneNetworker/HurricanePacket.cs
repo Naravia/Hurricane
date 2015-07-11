@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Text;
+using Hurricane.Networking.HurricaneNetworker.Extensions;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Networking.HurricaneNetworker
@@ -35,59 +36,103 @@ namespace Hurricane.Networking.HurricaneNetworker
             this.Position += data.Length;
         }
 
-        public void WriteInt16(Int16 data)
+        public void WriteInt16(Int16 data, Boolean reverse)
         {
-            var networkBytes = IPAddress.HostToNetworkOrder(data);
-            this.WriteBytes(BitConverter.GetBytes(networkBytes));
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteUInt16(UInt16 data)
+        public void WriteUInt16(UInt16 data, Boolean reverse)
         {
-            var networkBytes = IPAddress.HostToNetworkOrder(data);
-            this.WriteBytes(BitConverter.GetBytes(networkBytes));
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteInt32(Int32 data)
+        public void WriteInt32(Int32 data, Boolean reverse)
         {
-            var networkBytes = IPAddress.HostToNetworkOrder(data);
-            this.WriteBytes(BitConverter.GetBytes(networkBytes));
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteUInt32(UInt32 data)
+        public void WriteUInt32(UInt32 data, Boolean reverse)
         {
-            var networkBytes = IPAddress.HostToNetworkOrder(data);
-            this.WriteBytes(BitConverter.GetBytes(networkBytes));
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteInt64(Int64 data)
+        public void WriteInt64(Int64 data, Boolean reverse)
         {
-            var networkBytes = IPAddress.HostToNetworkOrder(data);
-            this.WriteBytes(BitConverter.GetBytes(networkBytes));
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteUInt64(UInt64 data)
+        public void WriteUInt64(UInt64 data, Boolean reverse)
         {
-            throw new NotImplementedException();
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteSingle(Single data)
+        public void WriteSingle(Single data, Boolean reverse)
         {
-            throw new NotImplementedException();
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteDouble(Double data)
+        public void WriteDouble(Double data, Boolean reverse)
         {
-            throw new NotImplementedException();
+            var bytes = BitConverter.GetBytes(data);
+            if (reverse) Array.Reverse(bytes);
+            this.WriteBytes(bytes);
         }
 
-        public void WriteCString(String data)
+        public void WriteFixedString(String data, Int32 stringLength, Boolean reverse)
         {
-            throw new NotImplementedException();
+            if (reverse)
+                data = data.ReverseString();
+
+            for (var i = 0; i < stringLength; ++i)
+            {
+                if (i < data.Length)
+                    this.WriteByte((Byte)data[i]);
+                else
+                    this.WriteByte(0x0);
+            }
         }
 
-        public void WriteWString(String data)
+        public void WriteCString(String data, Boolean reverse)
         {
-            throw new NotImplementedException();
+            var bytes = new Byte[data.Length + 1];
+            if (reverse)
+                data = data.ReverseString();
+
+            Array.Copy(sourceArray: data.ToCharArray(), destinationArray: bytes, length: bytes.Length - 1);
+            bytes[bytes.Length - 1] = 0x0;
+            this.WriteBytes(data: bytes);
+        }
+
+        public void WriteBString(String data, Boolean reverse)
+        {
+            if (reverse)
+                data = data.ReverseString();
+
+            this.WriteByte(data: Convert.ToByte(value: data.Length));
+            this.WriteFixedString(data: data, stringLength: data.Length, reverse: false);
+        }
+
+        public void WriteWString(String data, Boolean reverse)
+        {
+            if (reverse)
+                data = data.ReverseString();
+
+            this.WriteUInt16(data: Convert.ToUInt16(value: data.Length), reverse: reverse);
+            this.WriteFixedString(data: data, stringLength: data.Length, reverse: false);
         }
 
         public Byte ReadByte()
@@ -109,55 +154,71 @@ namespace Hurricane.Networking.HurricaneNetworker
             return data;
         }
 
-        public Int16 ReadInt16()
+        public Int16 ReadInt16(Boolean reverse)
         {
             var data = this.ReadBytes(2);
-            return Convert.ToInt16(data.Reverse());
+            if (reverse) data = data.Reverse().ToArray();
+            return BitConverter.ToInt16(data, 0);
         }
 
-        public UInt16 ReadUInt16()
+        public UInt16 ReadUInt16(Boolean reverse)
         {
             var data = this.ReadBytes(2);
-            return Convert.ToUInt16(data.Reverse());
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToUInt16(data, 0);
         }
 
-        public Int32 ReadInt32()
+        public Int32 ReadInt32(Boolean reverse)
         {
             var data = this.ReadBytes(4);
-            return Convert.ToInt32(data.Reverse());
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToInt32(data, 0);
         }
 
-        public UInt32 ReadUInt32()
+        public UInt32 ReadUInt32(Boolean reverse)
         {
             var data = this.ReadBytes(4);
-            return Convert.ToUInt32(data.Reverse());
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToUInt32(data, 0);
         }
 
-        public Int64 ReadInt64()
+        public Int64 ReadInt64(Boolean reverse)
         {
             var data = this.ReadBytes(8);
-            return Convert.ToInt64(data.Reverse());
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToInt64(data, 0);
         }
 
-        public UInt64 ReadUInt64()
+        public UInt64 ReadUInt64(Boolean reverse)
         {
             var data = this.ReadBytes(8);
-            return Convert.ToUInt64(data.Reverse());
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToUInt64(data, 0);
         }
 
-        public Single ReadSingle()
+        public Single ReadSingle(Boolean reverse)
         {
             var data = this.ReadBytes(4);
-            return Convert.ToSingle(data.Reverse());
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToSingle(data, 0);
         }
 
-        public Double ReadDouble()
+        public Double ReadDouble(Boolean reverse)
         {
-            var data = this.ReadBytes(2);
-            return Convert.ToDouble(data.Reverse());
+            var data = this.ReadBytes(8);
+            if (reverse) Array.Reverse(data);
+            return BitConverter.ToDouble(data, 0);
         }
 
-        public String ReadCString()
+        public String ReadFixedString(Int32 stringLength, Boolean reverse)
+        {
+            var data = this.ReadBytes(stringLength);
+            var str = Encoding.UTF8.GetString(data);
+            if (reverse) str = str.ReverseString();
+            return str;
+        }
+
+        public String ReadCString(Boolean reverse)
         {
             var sb = new StringBuilder();
             var b = this.ReadByte();
@@ -166,14 +227,27 @@ namespace Hurricane.Networking.HurricaneNetworker
                 sb.Append(b);
                 b = this.ReadByte();
             }
-            return sb.Length > 0 ? sb.ToString() : String.Empty;
+            var str =  sb.Length > 0 ? sb.ToString() : String.Empty;
+            if (reverse) str = str.ReverseString();
+            return str;
         }
 
-        public String ReadWString()
+        public String ReadBString(Boolean reverse)
         {
-            var stringLength = this.ReadUInt16();
+            var stringLength = this.ReadByte();
             var stringBody = this.ReadBytes(stringLength);
-            return Encoding.UTF8.GetString(stringBody);
+            var str = Encoding.UTF8.GetString(stringBody);
+            if (reverse) str = str.ReverseString();
+            return str;
+        }
+
+        public String ReadWString(Boolean reverse)
+        {
+            var stringLength = this.ReadUInt16(reverse);
+            var stringBody = this.ReadBytes(stringLength);
+            var str = Encoding.UTF8.GetString(stringBody);
+            if (reverse) str = str.ReverseString();
+            return str;
         }
 
         public Guid ObjectGuid { get; private set; }
