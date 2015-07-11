@@ -5,7 +5,7 @@ using Hurricane.Shared.Components;
 using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
 
-namespace Hurricane.Components.LogonServer
+namespace Hurricane.Components.Logon.LogonServer
 {
     public class LogonServer : IHurricaneComponent
     {
@@ -46,9 +46,7 @@ namespace Hurricane.Components.LogonServer
 
         public void Tick(TimeSpan timeSinceLastTick)
         {
-            //_log.WriteInfo("Tick!");
-            Random rng = new Random();
-            Thread.Sleep(rng.Next(100));
+            /* We don't actually need to do anything here yet */
         }
     }
 }
