@@ -41,15 +41,29 @@ namespace Hurricane.Logging.HurricaneLogger
 
         private String Parse(String source, String line, params Object[] parameters)
         {
+            var tag = String.Format("[{0}]", source);
             var computedLine = String.Format(line, parameters);
-            return String.Format("[{0}]: {1,10}", source, computedLine);
+            var computedLineSplitByNewlines = computedLine.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            var finalLine = String.Format("{0} {1}", tag, computedLineSplitByNewlines[0]);
+
+            if (computedLineSplitByNewlines.Length > 1)
+            {
+                for (var i = 1; i < computedLineSplitByNewlines.Length; ++i)
+                {
+                    finalLine += String.Format("{0}... {1}", Environment.NewLine, computedLineSplitByNewlines[i]);
+                }
+            }
+
+            //return String.Format("{0} {1}", tag, computedLine);
+            return finalLine;
         }
 
         public String WriteTrace(String line, params Object[] parameters)
         {
             if (!TraceOutputEnabled) return String.Empty;
 
-            var text = Parse("Trace", line, parameters);
+            var text = Parse("T", line, parameters);
             Output.WriteLine(text);
             return text;
         }
@@ -58,7 +72,7 @@ namespace Hurricane.Logging.HurricaneLogger
         {
             if (!DebugOutputEnabled) return String.Empty;
 
-            var text = Parse("Debug", line, parameters);
+            var text = Parse("D", line, parameters);
             Output.WriteLine(text);
             return text;
         }
@@ -67,7 +81,7 @@ namespace Hurricane.Logging.HurricaneLogger
         {
             if (!InfoOutputEnabled) return String.Empty;
 
-            var text = Parse("Info", line, parameters);
+            var text = Parse("I", line, parameters);
             Output.WriteLine(text);
             return text;
         }
@@ -76,7 +90,7 @@ namespace Hurricane.Logging.HurricaneLogger
         {
             if (!WarningOutputEnabled) return String.Empty;
 
-            var text = Parse("Warning", line, parameters);
+            var text = Parse("W", line, parameters);
             Output.WriteLine(text);
             return text;
         }
@@ -85,7 +99,7 @@ namespace Hurricane.Logging.HurricaneLogger
         {
             if (!ErrorOutputEnabled) return String.Empty;
 
-            var text = Parse("Error", line, parameters);
+            var text = Parse("E", line, parameters);
             Output.WriteLine(text);
             return text;
         }
@@ -94,7 +108,7 @@ namespace Hurricane.Logging.HurricaneLogger
         {
             if (!FatalOutputEnabled) return String.Empty;
 
-            var text = Parse("Fatal", line, parameters);
+            var text = Parse("F", line, parameters);
             Output.WriteLine(text);
             return text;
         }

@@ -1,29 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Hurricane.Components.LogonServer.Networking;
+using Hurricane.Shared.Components;
 using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Components.LogonServer
 {
-    public class LogonServer
+    public class LogonServer : IHurricaneComponent
     {
-        private LoggerCollection _log;
-        private INetworkInterface _network;
+        private readonly LoggerCollection _log;
+        private readonly INetworkInterface _network;
 
         public LogonServer(LoggerCollection log, INetworkInterface network)
         {
             _log = log;
+
             _network = network;
         }
 
-        public bool Initialise()
+        public void Initialise()
         {
-            _log.WriteInfo("Starting up");
-            _network.Startup();
-            return true;
+
+        }
+
+        public void Boot()
+        {
+            /* Register network handlers */
+            _network.OnClientConnecting += NetworkHandlers.OnClientConnecting;
+            _network.OnClientConnected += NetworkHandlers.OnClientConnected;
+            _network.OnReceiveData += NetworkHandlers.OnReceiveData;
+            _network.OnClientDisconnecting += NetworkHandlers.OnClientDisconnecting;
+            _network.OnClientDisconnected += NetworkHandlers.OnClientDisconnected;
+        }
+
+        public void Shutdown()
+        {
+            /* Unregister network handlers */
+            _network.OnClientConnecting -= NetworkHandlers.OnClientConnecting;
+            _network.OnClientConnected -= NetworkHandlers.OnClientConnected;
+            _network.OnReceiveData -= NetworkHandlers.OnReceiveData;
+            _network.OnClientDisconnecting -= NetworkHandlers.OnClientDisconnecting;
+            _network.OnClientDisconnected -= NetworkHandlers.OnClientDisconnected;
+        }
+
+        public TimeSpan Tick(TimeSpan timeSinceLastTick)
+        {
+            throw new NotImplementedException();
         }
     }
 }

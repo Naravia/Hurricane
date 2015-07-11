@@ -24,7 +24,21 @@ namespace Hurricane.Binaries.LogonServer
             var networkManager = new HurricaneNetworkInterface(IPAddress.Any, 3724, logCollection);
 
             /* Config not supported yet */
-            consoleLogger.TraceOutputEnabled = false;
+            //consoleLogger.TraceOutputEnabled = false;
+
+            consoleLogger.WriteTrace("fileLogger GUID: {0}", fileLogger.LoggerGuid);
+            consoleLogger.WriteTrace("consoleLogger GUID: {0}", consoleLogger.LoggerGuid);
+
+            /* Just a test, not a final feature */
+            consoleLogger.WriteTrace(String.Empty);
+            consoleLogger.WriteTrace("Look");
+            consoleLogger.WriteDebug("at");
+            consoleLogger.WriteInfo("the");
+            consoleLogger.WriteWarning("pretty");
+            consoleLogger.WriteError("tag");
+            consoleLogger.WriteFatal("alignment");
+
+            consoleLogger.WriteTrace("This is a really long\nlog entry\nspanning multiple lines of output and\nbeing used to demonstrate logger functionality");
 
             var startupTime = DateTime.Now;
 
