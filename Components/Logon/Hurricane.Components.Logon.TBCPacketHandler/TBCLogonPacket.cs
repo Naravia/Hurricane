@@ -1,20 +1,13 @@
 ﻿using System;
-using Hurricane.Shared.Components.Logon;
-using Hurricane.Shared.Logging;
-using Hurricane.Shared.Networking;
+using Hurricane.Shared.Components.Logon.Packets;
+using Hurricane.Shared.Logging.Interfaces;
+using Hurricane.Shared.Networking.Interfaces;
 
 namespace Hurricane.Components.Logon.TBCPacketHandler
 {
     public class TBCLogonPacket : ILogonPacket
     {
-        public Byte Opcode { get; set; }
-        public Byte Error { get; set; }
-        public UInt16 Size { get; set; }
-        public Guid ObjectGuid { get; private set; }
-        public Byte[] DataBytes { get; private set; }
-        public Int32 Position { get; set; }
-
-        private INetworkPacket _networkPacket;
+        private readonly INetworkPacket _networkPacket;
 
         public TBCLogonPacket(INetworkPacket networkPacket, ILogger log)
         {
@@ -27,6 +20,13 @@ namespace Hurricane.Components.Logon.TBCPacketHandler
             this.Error = this.ReadByte();
             this.Size = this.ReadUInt16(false);
         }
+
+        public Byte Opcode { get; set; }
+        public Byte Error { get; set; }
+        public UInt16 Size { get; set; }
+        public Guid ObjectGuid { get; private set; }
+        public Byte[] DataBytes { get; private set; }
+        public Int32 Position { get; set; }
 
         public void WriteByte(Byte data)
         {

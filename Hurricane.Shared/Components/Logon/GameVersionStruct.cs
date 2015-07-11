@@ -4,10 +4,10 @@ namespace Hurricane.Shared.Components.Logon
 {
     public struct GameVersionStruct
     {
+        public UInt16 Build;
         public Byte Expansion;
         public Byte Major;
         public Byte Minor;
-        public UInt16 Build;
 
         public override String ToString()
         {

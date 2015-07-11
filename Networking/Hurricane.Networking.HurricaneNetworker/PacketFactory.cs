@@ -1,5 +1,5 @@
 ﻿using System;
-using Hurricane.Shared.Networking;
+using Hurricane.Shared.Networking.Interfaces;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {

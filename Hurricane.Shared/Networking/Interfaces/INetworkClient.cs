@@ -1,8 +1,6 @@
-﻿using System;
-using System.Net;
-using Hurricane.Shared.Objects;
+﻿using Hurricane.Shared.Objects.Interfaces;
 
-namespace Hurricane.Shared.Networking
+namespace Hurricane.Shared.Networking.Interfaces
 {
     public interface INetworkClient : IHurricaneObject, IOutput
     {

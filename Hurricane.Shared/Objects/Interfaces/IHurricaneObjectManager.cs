@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hurricane.Shared.Objects
+namespace Hurricane.Shared.Objects.Interfaces
 {
     public interface IHurricaneObjectManager : IHurricaneObject
     {

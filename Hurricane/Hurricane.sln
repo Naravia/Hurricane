@@ -9,31 +9,31 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Shared", "..\Hurr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binaries", "Binaries", "{C174EEEB-DB46-4B2D-A86E-827AB0FC4096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Binaries.LogonServer", "..\Binaries\Hurricane.Binaries.LogonServer\Hurricane.Binaries.LogonServer.csproj", "{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogonServer", "..\Binaries\Hurricane.Binaries.LogonServer\LogonServer.csproj", "{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{2646A9E6-AD39-4D5B-85FA-FE2018480397}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Logging.HurricaneLogger", "..\Logging\Hurricane.Logging.HurricaneLogger\Hurricane.Logging.HurricaneLogger.csproj", "{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HurricaneLogger", "..\Logging\Hurricane.Logging.HurricaneLogger\HurricaneLogger.csproj", "{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{364F1197-637A-4544-9048-513360FCBA4C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Networking", "Networking", "{D9A630B2-ABF1-4EC1-95C9-3E1097D859B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Networking.HurricaneNetworker", "..\Networking\Hurricane.Networking.HurricaneNetworker\Hurricane.Networking.HurricaneNetworker.csproj", "{C8F9D14F-12F5-4D3F-9F04-4412F7B43FD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HurricaneNetworker", "..\Networking\Hurricane.Networking.HurricaneNetworker\HurricaneNetworker.csproj", "{C8F9D14F-12F5-4D3F-9F04-4412F7B43FD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Components.HurricaneTicker", "..\Components\Hurricane.Components.HurricaneTicker\Hurricane.Components.HurricaneTicker.csproj", "{4B9F8347-A08C-41CC-860B-4DBD9C466E00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HurricaneTicker", "..\Components\Hurricane.Components.HurricaneTicker\HurricaneTicker.csproj", "{4B9F8347-A08C-41CC-860B-4DBD9C466E00}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logon", "Logon", "{E8CD2BE8-C91F-4287-92B6-95F66532DDB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Components.Logon.LogonServer", "..\Components\Logon\Hurricane.Components.Logon.LogonServer\Hurricane.Components.Logon.LogonServer.csproj", "{04234DE4-062A-43D8-B758-D1A3937C4ED6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogonServer", "..\Components\Logon\Hurricane.Components.Logon.LogonServer\LogonServer.csproj", "{04234DE4-062A-43D8-B758-D1A3937C4ED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Components.Logon.LogonClient", "..\Components\Logon\Hurricane.Components.Logon.LogonClient\Hurricane.Components.Logon.LogonClient.csproj", "{F3D6BA35-01C8-4E16-A740-E5E3BB346A7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogonClient", "..\Components\Logon\Hurricane.Components.Logon.LogonClient\LogonClient.csproj", "{F3D6BA35-01C8-4E16-A740-E5E3BB346A7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Objects", "Objects", "{39A3A599-F197-46F0-A94B-104B7B29B05F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HurricaneObjectManager", "..\Objects\HurricaneObjectManager\HurricaneObjectManager.csproj", "{F0CE791E-5501-43A6-9665-23836B70326A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Components.Logon.TBCPacketHandler", "..\Components\Logon\Hurricane.Components.Logon.TBCPacketHandler\Hurricane.Components.Logon.TBCPacketHandler.csproj", "{7F99F914-3CCA-4619-9002-2EDFAA1C6465}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBCPacketHandler", "..\Components\Logon\Hurricane.Components.Logon.TBCPacketHandler\TBCPacketHandler.csproj", "{7F99F914-3CCA-4619-9002-2EDFAA1C6465}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

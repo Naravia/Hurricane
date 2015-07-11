@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Net;
 using System.Net.Sockets;
-using Hurricane.Shared.Logging;
-using Hurricane.Shared.Networking;
+using Hurricane.Shared.Logging.Interfaces;
+using Hurricane.Shared.Networking.Interfaces;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {

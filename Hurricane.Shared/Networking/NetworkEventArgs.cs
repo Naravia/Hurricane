@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Hurricane.Shared.Networking.Interfaces;
 
 namespace Hurricane.Shared.Networking
 {
     public class NetworkEventArgs : EventArgs
     {
-        public INetworkClient Client;
         public Boolean Cancel;
+        public INetworkClient Client;
         public Byte[] Data;
     }
 }

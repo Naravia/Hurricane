@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
 using System.Text;
 using Hurricane.Networking.HurricaneNetworker.Extensions;
-using Hurricane.Shared.Networking;
+using Hurricane.Shared.Networking.Interfaces;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {
@@ -100,7 +99,7 @@ namespace Hurricane.Networking.HurricaneNetworker
             for (var i = 0; i < stringLength; ++i)
             {
                 if (i < data.Length)
-                    this.WriteByte((Byte)data[i]);
+                    this.WriteByte((Byte) data[i]);
                 else
                     this.WriteByte(0x0);
             }
@@ -227,7 +226,7 @@ namespace Hurricane.Networking.HurricaneNetworker
                 sb.Append(b);
                 b = this.ReadByte();
             }
-            var str =  sb.Length > 0 ? sb.ToString() : String.Empty;
+            var str = sb.Length > 0 ? sb.ToString() : String.Empty;
             if (reverse) str = str.ReverseString();
             return str;
         }

@@ -1,7 +1,7 @@
 ﻿using System;
-using Hurricane.Shared.Objects;
+using Hurricane.Shared.Objects.Interfaces;
 
-namespace Hurricane.Shared.Logging
+namespace Hurricane.Shared.Logging.Interfaces
 {
     public interface ILogManager : IHurricaneObject
     {

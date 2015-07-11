@@ -3,8 +3,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using Hurricane.Shared.Logging;
+using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking;
+using Hurricane.Shared.Networking.Interfaces;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {
@@ -66,6 +67,7 @@ namespace Hurricane.Networking.HurricaneNetworker
         public event EventHandler<NetworkEventArgs> OnClientDisconnecting;
         public event EventHandler<NetworkEventArgs> OnClientDisconnected;
         public Guid ObjectGuid { get; private set; }
+        public ILogger Log { get; private set; }
 
         private async void ListenerLoop()
         {
@@ -184,7 +186,5 @@ namespace Hurricane.Networking.HurricaneNetworker
             if (this.OnClientDisconnected == null)
                 throw new NotImplementedException("No handler registered for OnClientDisconnected");
         }
-
-        public ILogger Log { get; private set; }
     }
 }

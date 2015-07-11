@@ -1,13 +1,12 @@
 ﻿using System;
-using Hurricane.Shared.Objects;
+using Hurricane.Shared.Objects.Interfaces;
 
-namespace Hurricane.Shared.Networking
+namespace Hurricane.Shared.Networking.Interfaces
 {
     public interface INetworkPacket : IHurricaneObject
     {
         Byte[] DataBytes { get; }
         Int32 Position { get; set; }
-
         void WriteByte(Byte data);
         void WriteBytes(Byte[] data);
         void WriteInt16(Int16 data, Boolean reverse);
@@ -22,7 +21,6 @@ namespace Hurricane.Shared.Networking
         void WriteCString(String data, Boolean reverse);
         void WriteBString(String data, Boolean reverse);
         void WriteWString(String data, Boolean reverse);
-
         Byte ReadByte();
         Byte[] ReadBytes(Int32 count);
         Byte[] ReadBytes(Int32 count, Int32 position);

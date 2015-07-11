@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Hurricane.Shared.Logging;
+using Hurricane.Shared.Logging.Interfaces;
 
 namespace Hurricane.Logging.HurricaneLogger
 {
@@ -12,20 +12,20 @@ namespace Hurricane.Logging.HurricaneLogger
             Boolean debugEnabled = true, Boolean infoEnabled = true, Boolean warningEnabled = true,
             Boolean errorEnabled = true, Boolean fatalEnabled = true, Boolean loggerEnabled = true)
         {
-            ObjectGuid = Guid.NewGuid();
+            this.ObjectGuid = Guid.NewGuid();
 
-            _sourceName = sourceName;
+            this._sourceName = sourceName;
 
             /* If null, replace with TextWriter.Null (which can be written to) */
-            Output = output ?? TextWriter.Null;
+            this.Output = output ?? TextWriter.Null;
 
-            LoggerEnabled = loggerEnabled;
-            TraceOutputEnabled = traceEnabled;
-            DebugOutputEnabled = debugEnabled;
-            InfoOutputEnabled = infoEnabled;
-            WarningOutputEnabled = warningEnabled;
-            ErrorOutputEnabled = errorEnabled;
-            FatalOutputEnabled = fatalEnabled;
+            this.LoggerEnabled = loggerEnabled;
+            this.TraceOutputEnabled = traceEnabled;
+            this.DebugOutputEnabled = debugEnabled;
+            this.InfoOutputEnabled = infoEnabled;
+            this.WarningOutputEnabled = warningEnabled;
+            this.ErrorOutputEnabled = errorEnabled;
+            this.FatalOutputEnabled = fatalEnabled;
         }
 
         public TextWriter Output { get; set; }
@@ -39,55 +39,55 @@ namespace Hurricane.Logging.HurricaneLogger
 
         public String WriteTrace(Guid sender, String line, params Object[] parameters)
         {
-            if (!TraceOutputEnabled) return String.Empty;
+            if (!this.TraceOutputEnabled) return String.Empty;
 
-            var text = Parse("T", line, parameters);
-            Output.WriteLine(text);
+            var text = this.Parse("T", line, parameters);
+            this.Output.WriteLine(text);
             return text;
         }
 
         public String WriteDebug(Guid sender, String line, params Object[] parameters)
         {
-            if (!DebugOutputEnabled) return String.Empty;
+            if (!this.DebugOutputEnabled) return String.Empty;
 
-            var text = Parse("D", line, parameters);
-            Output.WriteLine(text);
+            var text = this.Parse("D", line, parameters);
+            this.Output.WriteLine(text);
             return text;
         }
 
         public String WriteInfo(Guid sender, String line, params Object[] parameters)
         {
-            if (!InfoOutputEnabled) return String.Empty;
+            if (!this.InfoOutputEnabled) return String.Empty;
 
-            var text = Parse("I", line, parameters);
-            Output.WriteLine(text);
+            var text = this.Parse("I", line, parameters);
+            this.Output.WriteLine(text);
             return text;
         }
 
         public String WriteWarning(Guid sender, String line, params Object[] parameters)
         {
-            if (!WarningOutputEnabled) return String.Empty;
+            if (!this.WarningOutputEnabled) return String.Empty;
 
-            var text = Parse("W", line, parameters);
-            Output.WriteLine(text);
+            var text = this.Parse("W", line, parameters);
+            this.Output.WriteLine(text);
             return text;
         }
 
         public String WriteError(Guid sender, String line, params Object[] parameters)
         {
-            if (!ErrorOutputEnabled) return String.Empty;
+            if (!this.ErrorOutputEnabled) return String.Empty;
 
-            var text = Parse("E", line, parameters);
-            Output.WriteLine(text);
+            var text = this.Parse("E", line, parameters);
+            this.Output.WriteLine(text);
             return text;
         }
 
         public String WriteFatal(Guid sender, String line, params Object[] parameters)
         {
-            if (!FatalOutputEnabled) return String.Empty;
+            if (!this.FatalOutputEnabled) return String.Empty;
 
-            var text = Parse("F", line, parameters);
-            Output.WriteLine(text);
+            var text = this.Parse("F", line, parameters);
+            this.Output.WriteLine(text);
             return text;
         }
 

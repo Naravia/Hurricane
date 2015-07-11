@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Hurricane.Shared.Objects
+namespace Hurricane.Shared.Objects.Interfaces
 {
     public interface IHurricaneObject
     {

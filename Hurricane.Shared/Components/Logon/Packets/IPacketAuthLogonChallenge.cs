@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 
 namespace Hurricane.Shared.Components.Logon.Packets
 {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Hurricane.Shared.Logging;
+using Hurricane.Shared.Logging.Interfaces;
 
 namespace Hurricane.Logging.HurricaneLogger
 {
@@ -11,17 +10,17 @@ namespace Hurricane.Logging.HurricaneLogger
 
         public LogManager()
         {
-            ObjectGuid = Guid.NewGuid();
+            this.ObjectGuid = Guid.NewGuid();
         }
 
         public ILogger GetLoggerByGuid(Guid guid)
         {
-            return _loggers.ContainsKey(guid) ? _loggers[guid] : null;
+            return this._loggers.ContainsKey(guid) ? this._loggers[guid] : null;
         }
 
         public ILogger RegisterLogger(ILogger logger)
         {
-            _loggers.Add(key: logger.ObjectGuid, value: logger);
+            this._loggers.Add(key: logger.ObjectGuid, value: logger);
             return logger;
         }
 
@@ -29,7 +28,7 @@ namespace Hurricane.Logging.HurricaneLogger
 
         public void UnregisterLogger(Guid guid)
         {
-            _loggers.Remove(guid);
+            this._loggers.Remove(guid);
         }
     }
 }

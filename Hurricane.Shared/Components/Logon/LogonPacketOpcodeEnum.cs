@@ -4,6 +4,6 @@
     {
         UnhandledOpcode,
         InvalidOpcode,
-        AuthLogonChallenge,
+        AuthLogonChallenge
     }
 }

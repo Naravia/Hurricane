@@ -1,10 +1,10 @@
 ﻿using System;
 using Hurricane.Components.Logon.LogonServer.Networking;
 using Hurricane.Shared.Components;
-using Hurricane.Shared.Components.Logon;
-using Hurricane.Shared.Logging;
-using Hurricane.Shared.Networking;
-using Hurricane.Shared.Objects;
+using Hurricane.Shared.Components.Logon.Interfaces;
+using Hurricane.Shared.Logging.Interfaces;
+using Hurricane.Shared.Networking.Interfaces;
+using Hurricane.Shared.Objects.Interfaces;
 
 namespace Hurricane.Components.Logon.LogonServer
 {
@@ -13,10 +13,8 @@ namespace Hurricane.Components.Logon.LogonServer
         internal static IHurricaneObjectManager ObjectManager;
         internal static ILogonClientFactory ClientFactory;
         internal static IPacketFactory PacketFactory;
-        public ILogger Log { get; private set; }
         internal static ILogonPacketHandler LogonPacketHandler;
         internal static ILogonPacketFactory LogonPacketFactory;
-
         private readonly INetworkInterface _network;
 
         public LogonServer(ILogger log, INetworkInterface network, IHurricaneObjectManager objectManager,
@@ -35,6 +33,8 @@ namespace Hurricane.Components.Logon.LogonServer
             LogonPacketFactory = logonPacketFactory;
             LogonPacketHandler = logonPacketHandler;
         }
+
+        public ILogger Log { get; private set; }
 
         public void Initialise()
         {

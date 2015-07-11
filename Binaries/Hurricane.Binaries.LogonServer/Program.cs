@@ -7,9 +7,13 @@ using Hurricane.Components.Logon.TBCPacketHandler;
 using Hurricane.Logging.HurricaneLogger;
 using Hurricane.Networking.HurricaneNetworker;
 using Hurricane.Shared.Components.Logon;
+using Hurricane.Shared.Components.Logon.Interfaces;
 using Hurricane.Shared.Logging;
+using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking;
+using Hurricane.Shared.Networking.Interfaces;
 using Hurricane.Shared.Objects;
+using Hurricane.Shared.Objects.Interfaces;
 using HurricaneObjectManager;
 
 namespace Hurricane.Binaries.LogonServer

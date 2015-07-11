@@ -1,8 +1,8 @@
 ﻿using System;
-using Hurricane.Shared.Networking;
-using Hurricane.Shared.Objects;
+using Hurricane.Shared.Networking.Interfaces;
+using Hurricane.Shared.Objects.Interfaces;
 
-namespace Hurricane.Shared.Components.Logon
+namespace Hurricane.Shared.Components.Logon.Packets
 {
     public interface ILogonPacket : INetworkPacket, IOutput
     {

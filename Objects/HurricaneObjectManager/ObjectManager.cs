@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hurricane.Shared.Objects;
+using Hurricane.Shared.Objects.Interfaces;
 
 namespace HurricaneObjectManager
 {
@@ -10,21 +10,21 @@ namespace HurricaneObjectManager
 
         public ObjectManager()
         {
-            ObjectGuid = Guid.NewGuid();
+            this.ObjectGuid = Guid.NewGuid();
         }
 
         public IHurricaneObject Retrieve(Guid guid)
         {
-            if (_objects.ContainsKey(guid))
-                return _objects[guid];
+            if (this._objects.ContainsKey(guid))
+                return this._objects[guid];
 
             throw new KeyNotFoundException(String.Format("Object [{0}] not found in ObjectManager [{1}]", guid,
-                ObjectGuid));
+                this.ObjectGuid));
         }
 
         public void Store(IHurricaneObject obj)
         {
-            _objects.Add(obj.ObjectGuid, obj);
+            this._objects.Add(obj.ObjectGuid, obj);
         }
 
         public Guid ObjectGuid { get; private set; }
