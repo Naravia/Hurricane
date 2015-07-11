@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Net;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Networking
 {
-    public interface INetworkInterface
+    public interface INetworkInterface : IHurricaneObject
     {
-        Guid InterfaceGuid { get; }
         IPAddress BindAddress { get; set; } // Should deny change while interface is running
         Int32 BindPort { get; set; } // Should deny change while interface is running
         Boolean Running { get; }

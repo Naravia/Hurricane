@@ -52,9 +52,13 @@
       <Project>{4b9f8347-a08c-41cc-860b-4dbd9c466e00}</Project>
       <Name>Hurricane.Components.HurricaneTicker</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\Hurricane.Components.LogonServer\Hurricane.Components.LogonServer.csproj">
+    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.LogonClient\Hurricane.Components.Logon.LogonClient.csproj">
+      <Project>{f3d6ba35-01c8-4e16-a740-e5e3bb346a7e}</Project>
+      <Name>Hurricane.Components.Logon.LogonClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.LogonServer\Hurricane.Components.Logon.LogonServer.csproj">
       <Project>{04234de4-062a-43d8-b758-d1a3937c4ed6}</Project>
-      <Name>Hurricane.Components.LogonServer</Name>
+      <Name>Hurricane.Components.Logon.LogonServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>

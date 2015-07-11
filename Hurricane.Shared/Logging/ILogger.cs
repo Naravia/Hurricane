@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Logging
 {
-    public interface ILogger
+    public interface ILogger : IHurricaneObject
     {
-        Guid LoggerGuid { get; }
         TextWriter Output { get; set; }
 
         Boolean LoggerEnabled { get; set; }

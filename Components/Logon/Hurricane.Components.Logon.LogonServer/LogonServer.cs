@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Hurricane.Components.LogonServer.Networking;
+using Hurricane.Components.Logon.LogonServer.Networking;
 using Hurricane.Shared.Components;
 using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
@@ -14,6 +14,8 @@ namespace Hurricane.Components.Logon.LogonServer
 
         public LogonServer(LoggerCollection log, INetworkInterface network)
         {
+            ObjectGuid = Guid.NewGuid();
+
             _log = log;
 
             _network = network;
@@ -48,5 +50,7 @@ namespace Hurricane.Components.Logon.LogonServer
         {
             /* We don't actually need to do anything here yet */
         }
+
+        public Guid ObjectGuid { get; private set; }
     }
 }

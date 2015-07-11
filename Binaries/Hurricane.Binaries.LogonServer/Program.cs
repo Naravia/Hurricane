@@ -27,8 +27,8 @@ namespace Hurricane.Binaries.LogonServer
             /* Config not supported yet */
             //consoleLogger.TraceOutputEnabled = false;
 
-            consoleLogger.WriteTrace("fileLogger GUID: {0}", fileLogger.LoggerGuid);
-            consoleLogger.WriteTrace("consoleLogger GUID: {0}", consoleLogger.LoggerGuid);
+            consoleLogger.WriteTrace("fileLogger GUID: {0}", fileLogger.ObjectGuid);
+            consoleLogger.WriteTrace("consoleLogger GUID: {0}", consoleLogger.ObjectGuid);
 
             /* Just a test, not a final feature */
             consoleLogger.WriteTrace(String.Empty);
@@ -43,7 +43,7 @@ namespace Hurricane.Binaries.LogonServer
 
             var startupTime = DateTime.Now;
 
-            var logonServer = new Hurricane.Components.LogonServer.LogonServer(logCollection, networkManager);
+            var logonServer = new Components.Logon.LogonServer.LogonServer(logCollection, networkManager);
             logonServer.Initialise();
             logonServer.Boot();
 

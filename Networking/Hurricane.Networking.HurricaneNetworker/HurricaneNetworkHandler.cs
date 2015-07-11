@@ -8,12 +8,10 @@ namespace Hurricane.Networking.HurricaneNetworker
     {
         private Dictionary<Guid, INetworkInterface> _interfaces = new Dictionary<Guid, INetworkInterface>();
 
-        public HurricaneNetworkHandler(Guid networkHandlerGuid)
+        public HurricaneNetworkHandler()
         {
-            NetworkHandlerGuid = networkHandlerGuid;
+            ObjectGuid = Guid.NewGuid();
         }
-
-        public Guid NetworkHandlerGuid { get; private set; }
 
         public INetworkInterface CreateInterface()
         {
@@ -29,5 +27,7 @@ namespace Hurricane.Networking.HurricaneNetworker
         {
             throw new NotImplementedException();
         }
+
+        public Guid ObjectGuid { get; private set; }
     }
 }

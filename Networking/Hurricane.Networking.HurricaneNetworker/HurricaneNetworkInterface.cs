@@ -14,7 +14,7 @@ namespace Hurricane.Networking.HurricaneNetworker
 
         public HurricaneNetworkInterface(IPAddress bindAddress, Int32 bindPort, LoggerCollection log)
         {
-            InterfaceGuid = Guid.NewGuid();
+            ObjectGuid = Guid.NewGuid();
 
             BindAddress = bindAddress;
             BindPort = bindPort;
@@ -22,7 +22,6 @@ namespace Hurricane.Networking.HurricaneNetworker
             Running = false;
         }
 
-        public Guid InterfaceGuid { get; private set; }
         public IPAddress BindAddress { get; set; }
         public Int32 BindPort { get; set; }
         public Boolean Running { get; private set; }
@@ -109,5 +108,7 @@ namespace Hurricane.Networking.HurricaneNetworker
             if (OnClientDisconnected == null) throw new NotImplementedException("No handler registered for OnClientDisconnected");
 
         }
+
+        public Guid ObjectGuid { get; private set; }
     }
 }

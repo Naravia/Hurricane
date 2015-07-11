@@ -1,4 +1,5 @@
 ﻿using System;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Components
 {
@@ -7,7 +8,7 @@ namespace Hurricane.Shared.Components
     /// 
     /// Call order: Initialise(), Boot(), Tick() while server is running, Shutdown()
     /// </summary>
-    public interface IHurricaneComponent
+    public interface IHurricaneComponent : IHurricaneObject
     {
         /// <summary>
         /// Verifies all instances are instantiated correctly and throws a relevant exception if not

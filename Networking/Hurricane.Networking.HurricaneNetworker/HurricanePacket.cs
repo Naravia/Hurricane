@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {
-    class HurricanePacket : INetworkPacket
+    internal class HurricanePacket : INetworkPacket
     {
-        public Guid PacketGuid { get; private set; }
-        public Byte[] DataBytes { get; set; }
-        public UInt32 Position { get; set; }
-
         public HurricanePacket()
         {
-            PacketGuid = Guid.NewGuid();
+            ObjectGuid = Guid.NewGuid();
             DataBytes = new Byte[0];
             Position = 0;
         }
+
+        public Byte[] DataBytes { get; set; }
+        public UInt32 Position { get; set; }
 
         public void WriteByte(Byte data)
         {
@@ -149,5 +144,7 @@ namespace Hurricane.Networking.HurricaneNetworker
         {
             throw new NotImplementedException();
         }
+
+        public Guid ObjectGuid { get; private set; }
     }
 }

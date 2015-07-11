@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Components\IHurricaneComponent.cs" />
     <Compile Include="Components\IHurricaneTicker.cs" />
+    <Compile Include="Components\Logon\ILogonClient.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\ILogManager.cs" />
     <Compile Include="Logging\LoggerCollection.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Networking\INetworkPacket.cs" />
     <Compile Include="Networking\NetworkEventArgs.cs" />
     <Compile Include="Networking\NetworkEventEnum.cs" />
+    <Compile Include="Objects\IHurricaneObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

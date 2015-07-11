@@ -1,11 +1,10 @@
 ﻿using System;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Networking
 {
-    public interface INetworkPacket
+    public interface INetworkPacket : IHurricaneObject
     {
-        Guid PacketGuid { get; }
-
         Byte[] DataBytes { get; set; }
         UInt32 Position { get; set; }
 

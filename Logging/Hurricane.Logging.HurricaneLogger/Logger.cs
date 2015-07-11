@@ -6,24 +6,13 @@ namespace Hurricane.Logging.HurricaneLogger
 {
     public class Logger : ILogger
     {
-        public Guid LoggerGuid { get; private set; }
-        public TextWriter Output { get; set; }
-        public Boolean LoggerEnabled { get; set; }
-
-        public Boolean TraceOutputEnabled { get; set; }
-        public Boolean DebugOutputEnabled { get; set; }
-        public Boolean InfoOutputEnabled { get; set; }
-        public Boolean WarningOutputEnabled { get; set; }
-        public Boolean ErrorOutputEnabled { get; set; }
-        public Boolean FatalOutputEnabled { get; set; }
-        
         private readonly String _sourceName;
 
         public Logger(String sourceName, TextWriter output = null, Boolean traceEnabled = true,
             Boolean debugEnabled = true, Boolean infoEnabled = true, Boolean warningEnabled = true,
             Boolean errorEnabled = true, Boolean fatalEnabled = true, Boolean loggerEnabled = true)
         {
-            LoggerGuid = Guid.NewGuid();
+            ObjectGuid = Guid.NewGuid();
 
             _sourceName = sourceName;
 
@@ -39,25 +28,14 @@ namespace Hurricane.Logging.HurricaneLogger
             FatalOutputEnabled = fatalEnabled;
         }
 
-        private String Parse(String source, String line, params Object[] parameters)
-        {
-            var tag = String.Format("[{0}]", source);
-            var computedLine = String.Format(line, parameters);
-            var computedLineSplitByNewlines = computedLine.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
-
-            var finalLine = String.Format("{0} {1}", tag, computedLineSplitByNewlines[0]);
-
-            if (computedLineSplitByNewlines.Length > 1)
-            {
-                for (var i = 1; i < computedLineSplitByNewlines.Length; ++i)
-                {
-                    finalLine += String.Format("{0}... {1}", Environment.NewLine, computedLineSplitByNewlines[i]);
-                }
-            }
-
-            //return String.Format("{0} {1}", tag, computedLine);
-            return finalLine;
-        }
+        public TextWriter Output { get; set; }
+        public Boolean LoggerEnabled { get; set; }
+        public Boolean TraceOutputEnabled { get; set; }
+        public Boolean DebugOutputEnabled { get; set; }
+        public Boolean InfoOutputEnabled { get; set; }
+        public Boolean WarningOutputEnabled { get; set; }
+        public Boolean ErrorOutputEnabled { get; set; }
+        public Boolean FatalOutputEnabled { get; set; }
 
         public String WriteTrace(String line, params Object[] parameters)
         {
@@ -111,6 +89,28 @@ namespace Hurricane.Logging.HurricaneLogger
             var text = Parse("F", line, parameters);
             Output.WriteLine(text);
             return text;
+        }
+
+        public Guid ObjectGuid { get; private set; }
+
+        private String Parse(String source, String line, params Object[] parameters)
+        {
+            var tag = String.Format("[{0}]", source);
+            var computedLine = String.Format(line, parameters);
+            var computedLineSplitByNewlines = computedLine.Split(new[] {"\r\n", "\n"}, StringSplitOptions.None);
+
+            var finalLine = String.Format("{0} {1}", tag, computedLineSplitByNewlines[0]);
+
+            if (computedLineSplitByNewlines.Length > 1)
+            {
+                for (var i = 1; i < computedLineSplitByNewlines.Length; ++i)
+                {
+                    finalLine += String.Format("{0}... {1}", Environment.NewLine, computedLineSplitByNewlines[i]);
+                }
+            }
+
+            //return String.Format("{0} {1}", tag, computedLine);
+            return finalLine;
         }
     }
 }

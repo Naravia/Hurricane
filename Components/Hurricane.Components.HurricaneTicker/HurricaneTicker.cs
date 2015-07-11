@@ -15,7 +15,7 @@ namespace Hurricane.Components.HurricaneTicker
 
         public HurricaneTicker(IHurricaneComponent component)
         {
-            TickerGuid = Guid.NewGuid();
+            ObjectGuid = Guid.NewGuid();
 
             /* Used to calculate running average of ticks */
             TickCount = 0;
@@ -33,7 +33,6 @@ namespace Hurricane.Components.HurricaneTicker
             _timer.Elapsed += InternalTick;
         }
 
-        public Guid TickerGuid { get; private set; }
         public Int64 TickCount { get; private set; }
 
         public TimeSpan RunningTime
@@ -81,5 +80,7 @@ namespace Hurricane.Components.HurricaneTicker
             /* Finally, set the time of the last tick to now */
             _lastTick = DateTime.Now;
         }
+
+        public Guid ObjectGuid { get; private set; }
     }
 }

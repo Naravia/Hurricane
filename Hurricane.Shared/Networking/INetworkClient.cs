@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Net;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Networking
 {
-    public interface INetworkClient
+    public interface INetworkClient : IHurricaneObject
     {
-        Guid ClientGuid { get; }
         IPAddress ClientIpAddress { get; }
 
         void SendPacket(INetworkPacket packet);

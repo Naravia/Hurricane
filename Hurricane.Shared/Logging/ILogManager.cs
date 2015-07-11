@@ -1,11 +1,10 @@
 ﻿using System;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Logging
 {
-    public interface ILogManager
+    public interface ILogManager : IHurricaneObject
     {
-        Guid LogManagerGuid { get; }
-
         ILogger GetLoggerByType(LoggerTypeEnum loggerType);
         ILogger GetLoggerByGuid(Guid guid);
     }

@@ -11,10 +11,8 @@ namespace Hurricane.Logging.HurricaneLogger
 
         public LogManager()
         {
-            LogManagerGuid = Guid.NewGuid();
+            ObjectGuid = Guid.NewGuid();
         }
-
-        public Guid LogManagerGuid { get; private set; }
 
         public ILogger GetLoggerByType(LoggerTypeEnum loggerType)
         {
@@ -24,9 +22,11 @@ namespace Hurricane.Logging.HurricaneLogger
         public ILogger GetLoggerByGuid(Guid guid)
         {
             return (from logger in _loggers
-                where logger.Value.LoggerGuid == guid
+                where logger.Value.ObjectGuid == guid
                 select logger.Value).FirstOrDefault();
         }
+
+        public Guid ObjectGuid { get; private set; }
 
         public ILogger RegisterLogger(LoggerTypeEnum loggerType, ILogger logger)
         {

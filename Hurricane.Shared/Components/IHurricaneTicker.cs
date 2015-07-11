@@ -1,14 +1,13 @@
 ﻿using System;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Components
 {
     /// <summary>
     /// Pulses a HurricaneComponent at a regular interval and provides timing data
     /// </summary>
-    public interface IHurricaneTicker
+    public interface IHurricaneTicker : IHurricaneObject
     {
-        Guid TickerGuid { get; }
-
         Int64 TickCount { get; }
 
         TimeSpan RunningTime { get; }

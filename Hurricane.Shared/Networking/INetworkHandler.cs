@@ -1,11 +1,10 @@
 ﻿using System;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Networking
 {
-    public interface INetworkHandler
+    public interface INetworkHandler : IHurricaneObject
     {
-        Guid NetworkHandlerGuid { get; }
-
         INetworkInterface CreateInterface();
         Boolean DestroyInterface(Guid guid);
         Boolean DestroyInterface(INetworkInterface networkInterface);

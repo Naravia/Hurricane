@@ -11,8 +11,6 @@ namespace Hurricane.Networking.HurricaneNetworker
 {
     class HurricaneClient : INetworkClient
     {
-        public Guid ClientGuid { get; private set; }
-
         public IPAddress ClientIpAddress {
             get
             {
@@ -24,7 +22,7 @@ namespace Hurricane.Networking.HurricaneNetworker
 
         public HurricaneClient(TcpClient client)
         {
-            ClientGuid = Guid.NewGuid();
+            ObjectGuid = Guid.NewGuid();
             _client = client;
         }
 
@@ -32,5 +30,7 @@ namespace Hurricane.Networking.HurricaneNetworker
         {
             throw new NotImplementedException();
         }
+
+        public Guid ObjectGuid { get; private set; }
     }
 }
