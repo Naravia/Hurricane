@@ -60,6 +60,10 @@
       <Project>{d2a38b56-0257-4d55-9666-dddb4c1ad3f3}</Project>
       <Name>Hurricane.Logging.HurricaneLogger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Networking\Hurricane.Networking.HurricaneNetworker\Hurricane.Networking.HurricaneNetworker.csproj">
+      <Project>{c8f9d14f-12f5-4d3f-9f04-4412f7b43fd3}</Project>
+      <Name>Hurricane.Networking.HurricaneNetworker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

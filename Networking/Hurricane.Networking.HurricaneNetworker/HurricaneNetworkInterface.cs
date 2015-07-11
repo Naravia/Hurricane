@@ -2,19 +2,23 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {
-    internal class HurricaneNetworkInterface : INetworkInterface
+    public class HurricaneNetworkInterface : INetworkInterface
     {
         private TcpListener _listener;
+        private LoggerCollection _log;
 
-        public HurricaneNetworkInterface(Guid interfaceGuid, IPAddress bindAddress, Int32 bindPort)
+        public HurricaneNetworkInterface(IPAddress bindAddress, Int32 bindPort, LoggerCollection log)
         {
-            InterfaceGuid = interfaceGuid;
+            InterfaceGuid = Guid.NewGuid();
+
             BindAddress = bindAddress;
             BindPort = bindPort;
+            _log = log;
             Running = false;
         }
 
@@ -30,10 +34,19 @@ namespace Hurricane.Networking.HurricaneNetworker
             if (OnReceiveData == null) throw new NotImplementedException("No handler registered for OnReceiveData");
             if (OnClientDisconnecting == null) throw new NotImplementedException("No handler registered for OnClientDisconnecting");
             if (OnClientDisconnected == null) throw new NotImplementedException("No handler registered for OnClientDisconnected");
-                
-            _listener = new TcpListener(BindAddress, BindPort);
-            _listener.Start();
-            throw new NotImplementedException();
+
+            try
+            {
+                _listener = new TcpListener(BindAddress, BindPort);
+                _listener.Start();
+                ListenerLoop();
+            }
+            catch (Exception ex)
+            {
+                _log.WriteFatal("Could not start listener on {0}:{1}\n{2}", BindAddress.ToString(), BindPort, ex.ToString());
+                return false;
+            }
+            return true;
         }
 
         public Boolean Shutdown()

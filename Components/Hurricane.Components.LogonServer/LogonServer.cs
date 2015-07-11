@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hurricane.Shared.Logging;
+using Hurricane.Shared.Networking;
 
 namespace Hurricane.Components.LogonServer
 {
     public class LogonServer
     {
-        private ILogger _feedbackLogger;
-        private ILogger _fileLogger;
+        private LoggerCollection _log;
+        private INetworkInterface _network;
 
-        public LogonServer(ILogger feedbackLogger, ILogger fileLogger)
+        public LogonServer(LoggerCollection log, INetworkInterface network)
         {
-            _feedbackLogger = feedbackLogger;
-            _fileLogger = fileLogger;
+            _log = log;
+            _network = network;
         }
 
         public bool Initialise()
         {
-            _feedbackLogger.WriteInfo("Starting up");
-            _fileLogger.WriteInfo("Starting up");
+            _log.WriteInfo("Starting up");
+            _network.Startup();
             return true;
         }
     }

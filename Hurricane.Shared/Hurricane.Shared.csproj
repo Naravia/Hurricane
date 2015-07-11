@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\ILogManager.cs" />
+    <Compile Include="Logging\LoggerCollection.cs" />
     <Compile Include="Logging\LoggerTypeEnum.cs" />
     <Compile Include="Networking\INetworkClient.cs" />
     <Compile Include="Networking\INetworkHandler.cs" />
