@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{4B9F8347-A08C-41CC-860B-4DBD9C466E00}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hurricane.Binaries.LogonServer</RootNamespace>
-    <AssemblyName>Hurricane.Binaries.LogonServer</AssemblyName>
+    <RootNamespace>Hurricane.Components.HurricaneTicker</RootNamespace>
+    <AssemblyName>Hurricane.Components.HurricaneTicker</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,32 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DoubleExtensions.cs" />
+    <Compile Include="HurricaneTicker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeSpanExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Components\Hurricane.Components.HurricaneTicker\Hurricane.Components.HurricaneTicker.csproj">
-      <Project>{4b9f8347-a08c-41cc-860b-4dbd9c466e00}</Project>
-      <Name>Hurricane.Components.HurricaneTicker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Components\Hurricane.Components.LogonServer\Hurricane.Components.LogonServer.csproj">
-      <Project>{04234de4-062a-43d8-b758-d1a3937c4ed6}</Project>
-      <Name>Hurricane.Components.LogonServer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Logging\Hurricane.Logging.HurricaneLogger\Hurricane.Logging.HurricaneLogger.csproj">
-      <Project>{d2a38b56-0257-4d55-9666-dddb4c1ad3f3}</Project>
-      <Name>Hurricane.Logging.HurricaneLogger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Networking\Hurricane.Networking.HurricaneNetworker\Hurricane.Networking.HurricaneNetworker.csproj">
-      <Project>{c8f9d14f-12f5-4d3f-9f04-4412f7b43fd3}</Project>
-      <Name>Hurricane.Networking.HurricaneNetworker</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

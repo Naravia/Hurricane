@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
+using Hurricane.Components.HurricaneTicker;
 using Hurricane.Logging.HurricaneLogger;
 using Hurricane.Networking.HurricaneNetworker;
 using Hurricane.Shared.Logging;
@@ -44,6 +45,21 @@ namespace Hurricane.Binaries.LogonServer
 
             var logonServer = new Hurricane.Components.LogonServer.LogonServer(logCollection, networkManager);
             logonServer.Initialise();
+            logonServer.Boot();
+
+            var logonTicker = new HurricaneTicker(logonServer)
+            {
+                Interval = TimeSpan.FromMilliseconds(15),
+                Enabled = true
+            };
+
+            for (var i = 0; i < 30; ++i)
+            {
+                consoleLogger.WriteInfo("Ticks: Last[{0}] Average[{1}] Slowest[{2}] Fastest[{3}] Count[{4}]",
+                    logonTicker.LastTick.TotalMilliseconds, logonTicker.AverageTick.TotalMilliseconds,
+                    logonTicker.SlowestTick.TotalMilliseconds, logonTicker.FastestTick.TotalMilliseconds, logonTicker.TickCount);
+                Thread.Sleep(1000);
+            }
 
             var finishTime = DateTime.Now;
 

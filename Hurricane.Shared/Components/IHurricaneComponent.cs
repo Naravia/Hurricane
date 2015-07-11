@@ -33,7 +33,7 @@ namespace Hurricane.Shared.Components
         /// This is called frequently and DOES NOT BLOCK! This means tickrate can be used to quickly judge component performance
         /// All network related code is in a completely seperate thread and calls back to static methods
         /// </summary>
-        /// <param name="timeSinceLastTick"></param>
-        TimeSpan Tick(TimeSpan timeSinceLastTick);
+        /// <param name="timeSinceLastTick">Amount of time that has passed since Tick() was last called</param>
+        void Tick(TimeSpan timeSinceLastTick);
     }
 }

@@ -9,10 +9,13 @@ namespace Hurricane.Shared.Components
     {
         Guid TickerGuid { get; }
 
+        Int64 TickCount { get; }
+
         TimeSpan RunningTime { get; }
         TimeSpan AverageTick { get; }
         TimeSpan FastestTick { get; }
         TimeSpan SlowestTick { get; }
+        TimeSpan LastTick { get; }
 
         TimeSpan Interval { get; set; }
         Boolean Enabled { get; set; }

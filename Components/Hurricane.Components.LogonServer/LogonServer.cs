@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Hurricane.Components.LogonServer.Networking;
 using Hurricane.Shared.Components;
 using Hurricane.Shared.Logging;
@@ -43,9 +44,11 @@ namespace Hurricane.Components.LogonServer
             _network.OnClientDisconnected -= NetworkHandlers.OnClientDisconnected;
         }
 
-        public TimeSpan Tick(TimeSpan timeSinceLastTick)
+        public void Tick(TimeSpan timeSinceLastTick)
         {
-            throw new NotImplementedException();
+            //_log.WriteInfo("Tick!");
+            Random rng = new Random();
+            Thread.Sleep(rng.Next(100));
         }
     }
 }
