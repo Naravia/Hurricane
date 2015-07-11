@@ -6,7 +6,7 @@ namespace Hurricane.Shared.Components
     /// <summary>
     /// Pulses a HurricaneComponent at a regular interval and provides timing data
     /// </summary>
-    public interface IHurricaneTicker : IHurricaneObject
+    public interface IHurricaneTicker : IHurricaneObject, IOutput
     {
         Int64 TickCount { get; }
 

@@ -8,7 +8,7 @@ namespace Hurricane.Shared.Components
     /// 
     /// Call order: Initialise(), Boot(), Tick() while server is running, Shutdown()
     /// </summary>
-    public interface IHurricaneComponent : IHurricaneObject
+    public interface IHurricaneComponent : IHurricaneObject, IOutput
     {
         /// <summary>
         /// Verifies all instances are instantiated correctly and throws a relevant exception if not

@@ -1,5 +1,6 @@
 ﻿using System;
 using Hurricane.Shared.Components.Logon;
+using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Components.Logon.TBCPacketHandler
@@ -15,12 +16,13 @@ namespace Hurricane.Components.Logon.TBCPacketHandler
 
         private INetworkPacket _networkPacket;
 
-        public TBCLogonPacket(INetworkPacket networkPacket)
+        public TBCLogonPacket(INetworkPacket networkPacket, ILogger log)
         {
             this.ObjectGuid = Guid.NewGuid();
 
             networkPacket.Position = 0;
             this._networkPacket = networkPacket;
+            this.Log = log;
             this.Opcode = this.ReadByte();
             this.Error = this.ReadByte();
             this.Size = this.ReadUInt16(false);
@@ -170,5 +172,7 @@ namespace Hurricane.Components.Logon.TBCPacketHandler
         {
             return this._networkPacket.ReadWString(reverse: reverse);
         }
+
+        public ILogger Log { get; private set; }
     }
 }

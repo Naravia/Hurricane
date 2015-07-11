@@ -13,7 +13,7 @@ namespace Hurricane.Components.Logon.LogonServer
         internal static IHurricaneObjectManager ObjectManager;
         internal static ILogonClientFactory ClientFactory;
         internal static IPacketFactory PacketFactory;
-        internal static ILogger Log;
+        public ILogger Log { get; private set; }
         internal static ILogonPacketHandler LogonPacketHandler;
         internal static ILogonPacketFactory LogonPacketFactory;
 
@@ -25,7 +25,8 @@ namespace Hurricane.Components.Logon.LogonServer
         {
             this.ObjectGuid = Guid.NewGuid();
 
-            Log = log;
+            this.Log = log;
+            NetworkHandlers.Log = log; // Static class
 
             this._network = network;
             ObjectManager = objectManager;

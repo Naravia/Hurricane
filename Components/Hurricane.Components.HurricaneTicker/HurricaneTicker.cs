@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Hurricane.Shared.Components;
+using Hurricane.Shared.Logging;
 using Timer = System.Timers.Timer;
 
 namespace Hurricane.Components.HurricaneTicker
@@ -13,7 +14,7 @@ namespace Hurricane.Components.HurricaneTicker
         private IHurricaneComponent _component;
         private DateTime _lastTick;
 
-        public HurricaneTicker(IHurricaneComponent component)
+        public HurricaneTicker(IHurricaneComponent component, ILogger log)
         {
             ObjectGuid = Guid.NewGuid();
 
@@ -26,6 +27,7 @@ namespace Hurricane.Components.HurricaneTicker
             SlowestTick = new TimeSpan(0);
 
             _component = component;
+            this.Log = log;
             _startupTime = DateTime.Now;
             _lastTick = DateTime.Now;
 
@@ -82,5 +84,6 @@ namespace Hurricane.Components.HurricaneTicker
         }
 
         public Guid ObjectGuid { get; private set; }
+        public ILogger Log { get; private set; }
     }
 }

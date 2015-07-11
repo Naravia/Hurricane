@@ -8,14 +8,15 @@ namespace Hurricane.Components.Logon.TBCPacketHandler
 {
     public class TBCPacketHandler : ILogonPacketHandler
     {
-        public TBCPacketHandler()
+        public TBCPacketHandler(ILogger log)
         {
+            this.Log = log;
             this.ObjectGuid = Guid.NewGuid();
         }
 
         public ILogonPacket ParseNetworkPacket(INetworkPacket packet)
         {
-            return new TBCLogonPacket(packet);
+            return new TBCLogonPacket(packet, this.Log);
         }
 
         public LogonPacketOpcodeEnum GetOpcodeEnum(Byte opcode)
@@ -41,5 +42,6 @@ namespace Hurricane.Components.Logon.TBCPacketHandler
         }
 
         public Guid ObjectGuid { get; private set; }
+        public ILogger Log { get; private set; }
     }
 }

@@ -31,8 +31,8 @@ namespace Hurricane.Binaries.LogonServer
                 log: consoleLogger);
             ILogonClientFactory logonClientFactory = new LogonClientFactory();
             IPacketFactory packetFactory = new PacketFactory();
-            ILogonPacketFactory logonPacketFactory = new TBCLogonPacketFactory();
-            ILogonPacketHandler logonPacketHandler = new TBCPacketHandler();
+            ILogonPacketFactory logonPacketFactory = new TBCLogonPacketFactory(log: consoleLogger);
+            ILogonPacketHandler logonPacketHandler = new TBCPacketHandler(log: consoleLogger);
 
             var logonServer = new Components.Logon.LogonServer.LogonServer(log: consoleLogger, network: networkManager,
                 objectManager: logonClientManager, factory: logonClientFactory, packetFactory: packetFactory, logonPacketFactory: logonPacketFactory,
@@ -40,7 +40,7 @@ namespace Hurricane.Binaries.LogonServer
             logonServer.Initialise();
             logonServer.Boot();
 
-            var logonTicker = new HurricaneTicker(component: logonServer)
+            var logonTicker = new HurricaneTicker(component: logonServer, log: consoleLogger)
             {
                 Interval = TimeSpan.FromMilliseconds(value: 15),
                 Enabled = true

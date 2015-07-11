@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Networking.HurricaneNetworker
@@ -8,8 +9,9 @@ namespace Hurricane.Networking.HurricaneNetworker
     {
         private Dictionary<Guid, INetworkInterface> _interfaces = new Dictionary<Guid, INetworkInterface>();
 
-        public HurricaneNetworkHandler()
+        public HurricaneNetworkHandler(ILogger log)
         {
+            this.Log = log;
             this.ObjectGuid = Guid.NewGuid();
         }
 
@@ -29,5 +31,6 @@ namespace Hurricane.Networking.HurricaneNetworker
         }
 
         public Guid ObjectGuid { get; private set; }
+        public ILogger Log { get; private set; }
     }
 }

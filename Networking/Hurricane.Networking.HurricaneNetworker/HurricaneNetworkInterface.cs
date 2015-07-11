@@ -10,7 +10,6 @@ namespace Hurricane.Networking.HurricaneNetworker
 {
     public class HurricaneNetworkInterface : INetworkInterface
     {
-        private readonly ILogger _log;
         private TcpListener _listener;
 
         public HurricaneNetworkInterface(IPAddress bindAddress, Int32 bindPort, ILogger log)
@@ -19,7 +18,7 @@ namespace Hurricane.Networking.HurricaneNetworker
 
             this.BindAddress = bindAddress;
             this.BindPort = bindPort;
-            this._log = log;
+            this.Log = log;
             this.Running = false;
         }
 
@@ -48,7 +47,7 @@ namespace Hurricane.Networking.HurricaneNetworker
             }
             catch (Exception ex)
             {
-                this._log.WriteFatal(this.ObjectGuid, "Could not start listener on {0}:{1}\n{2}",
+                this.Log.WriteFatal(this.ObjectGuid, "Could not start listener on {0}:{1}\n{2}",
                     this.BindAddress.ToString(), this.BindPort, ex.ToString());
                 return false;
             }
@@ -93,15 +92,15 @@ namespace Hurricane.Networking.HurricaneNetworker
                 while (client.Client.Connected)
                 {
                     var buffer = new Byte[4096];
-                    this._log.WriteTrace(this.ObjectGuid, "Waiting to read data from {0}", client.ObjectGuid);
+                    this.Log.WriteTrace(this.ObjectGuid, "Waiting to read data from {0}", client.ObjectGuid);
                     var bytesRead = await stream.ReadAsync(buffer, 0, 4096);
                     if (bytesRead == 0)
                     {
                         /* Client has disconnected */
-                        this._log.WriteDebug(this.ObjectGuid, "{0} sent 0 bytes (disconnected)", client.ObjectGuid);
+                        this.Log.WriteDebug(this.ObjectGuid, "{0} sent 0 bytes (disconnected)", client.ObjectGuid);
                         return true;
                     }
-                    this._log.WriteTrace(this.ObjectGuid, "{0} sent {1} bytes", client.ObjectGuid, bytesRead);
+                    this.Log.WriteTrace(this.ObjectGuid, "{0} sent {1} bytes", client.ObjectGuid, bytesRead);
 
                     var args = new NetworkEventArgs
                     {
@@ -113,7 +112,7 @@ namespace Hurricane.Networking.HurricaneNetworker
                     if (args.Cancel)
                     {
                         /* We want to kick the client for some reason. Whatever, bye */
-                        this._log.WriteDebug(this.ObjectGuid, "{0} is being kicked by the server (disconnected)",
+                        this.Log.WriteDebug(this.ObjectGuid, "{0} is being kicked by the server (disconnected)",
                             client.ObjectGuid);
                         return true;
                     }
@@ -121,8 +120,8 @@ namespace Hurricane.Networking.HurricaneNetworker
             }
             catch (Exception ex)
             {
-                this._log.WriteError(this.ObjectGuid, "Failed to read data from [{0}]", client.ObjectGuid);
-                this._log.WriteError(this.ObjectGuid, ex.ToString());
+                this.Log.WriteError(this.ObjectGuid, "Failed to read data from [{0}]", client.ObjectGuid);
+                this.Log.WriteError(this.ObjectGuid, ex.ToString());
                 return false;
             }
             return true;
@@ -151,7 +150,7 @@ namespace Hurricane.Networking.HurricaneNetworker
             if (this.OnClientConnected == null)
                 throw new NotImplementedException("No handler registered for OnClientConnected");
 
-            var managedClient = new HurricaneClient(client);
+            var managedClient = new HurricaneClient(client, this.Log);
             var args = new NetworkEventArgs
             {
                 Client = managedClient
@@ -185,5 +184,7 @@ namespace Hurricane.Networking.HurricaneNetworker
             if (this.OnClientDisconnected == null)
                 throw new NotImplementedException("No handler registered for OnClientDisconnected");
         }
+
+        public ILogger Log { get; private set; }
     }
 }

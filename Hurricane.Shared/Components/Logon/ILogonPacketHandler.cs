@@ -5,7 +5,7 @@ using Hurricane.Shared.Objects;
 
 namespace Hurricane.Shared.Components.Logon
 {
-    public interface ILogonPacketHandler : IHurricaneObject
+    public interface ILogonPacketHandler : IHurricaneObject, IOutput
     {
         ILogonPacket ParseNetworkPacket(INetworkPacket packet);
         LogonPacketOpcodeEnum GetOpcodeEnum(Byte opcode);

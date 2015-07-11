@@ -61,6 +61,7 @@
     <Compile Include="Networking\NetworkEventArgs.cs" />
     <Compile Include="Objects\IHurricaneObject.cs" />
     <Compile Include="Objects\IHurricaneObjectManager.cs" />
+    <Compile Include="Objects\IOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
