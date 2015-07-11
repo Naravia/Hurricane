@@ -37,7 +37,7 @@ namespace Hurricane.Logging.HurricaneLogger
         public Boolean ErrorOutputEnabled { get; set; }
         public Boolean FatalOutputEnabled { get; set; }
 
-        public String WriteTrace(String line, params Object[] parameters)
+        public String WriteTrace(Guid sender, String line, params Object[] parameters)
         {
             if (!TraceOutputEnabled) return String.Empty;
 
@@ -46,7 +46,7 @@ namespace Hurricane.Logging.HurricaneLogger
             return text;
         }
 
-        public String WriteDebug(String line, params Object[] parameters)
+        public String WriteDebug(Guid sender, String line, params Object[] parameters)
         {
             if (!DebugOutputEnabled) return String.Empty;
 
@@ -55,7 +55,7 @@ namespace Hurricane.Logging.HurricaneLogger
             return text;
         }
 
-        public String WriteInfo(String line, params Object[] parameters)
+        public String WriteInfo(Guid sender, String line, params Object[] parameters)
         {
             if (!InfoOutputEnabled) return String.Empty;
 
@@ -64,7 +64,7 @@ namespace Hurricane.Logging.HurricaneLogger
             return text;
         }
 
-        public String WriteWarning(String line, params Object[] parameters)
+        public String WriteWarning(Guid sender, String line, params Object[] parameters)
         {
             if (!WarningOutputEnabled) return String.Empty;
 
@@ -73,7 +73,7 @@ namespace Hurricane.Logging.HurricaneLogger
             return text;
         }
 
-        public String WriteError(String line, params Object[] parameters)
+        public String WriteError(Guid sender, String line, params Object[] parameters)
         {
             if (!ErrorOutputEnabled) return String.Empty;
 
@@ -82,7 +82,7 @@ namespace Hurricane.Logging.HurricaneLogger
             return text;
         }
 
-        public String WriteFatal(String line, params Object[] parameters)
+        public String WriteFatal(Guid sender, String line, params Object[] parameters)
         {
             if (!FatalOutputEnabled) return String.Empty;
 

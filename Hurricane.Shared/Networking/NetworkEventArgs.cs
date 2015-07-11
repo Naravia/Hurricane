@@ -9,7 +9,7 @@ namespace Hurricane.Shared.Networking
     public class NetworkEventArgs : EventArgs
     {
         public INetworkClient Client;
-        public NetworkEventEnum NetworkEvent;
         public Boolean Cancel;
+        public Byte[] Data;
     }
 }

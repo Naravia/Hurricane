@@ -10,7 +10,7 @@ namespace Hurricane.Networking.HurricaneNetworker
 
         public HurricaneNetworkHandler()
         {
-            ObjectGuid = Guid.NewGuid();
+            this.ObjectGuid = Guid.NewGuid();
         }
 
         public INetworkInterface CreateInterface()

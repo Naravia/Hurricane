@@ -1,49 +1,62 @@
 ﻿using System;
-using System.Threading;
 using Hurricane.Components.Logon.LogonServer.Networking;
 using Hurricane.Shared.Components;
+using Hurricane.Shared.Components.Logon;
 using Hurricane.Shared.Logging;
 using Hurricane.Shared.Networking;
+using Hurricane.Shared.Objects;
 
 namespace Hurricane.Components.Logon.LogonServer
 {
     public class LogonServer : IHurricaneComponent
     {
-        private readonly LoggerCollection _log;
+        internal static IHurricaneObjectManager ObjectManager;
+        internal static ILogonClientFactory ClientFactory;
+        internal static IPacketFactory PacketFactory;
+        internal static ILogger Log;
         private readonly INetworkInterface _network;
 
-        public LogonServer(LoggerCollection log, INetworkInterface network)
+        public LogonServer(ILogger log, INetworkInterface network, IHurricaneObjectManager objectManager,
+            ILogonClientFactory factory, IPacketFactory packetFactory)
         {
-            ObjectGuid = Guid.NewGuid();
+            this.ObjectGuid = Guid.NewGuid();
 
-            _log = log;
+            Log = log;
 
-            _network = network;
+            this._network = network;
+            ObjectManager = objectManager;
+            ClientFactory = factory;
+            PacketFactory = packetFactory;
         }
 
         public void Initialise()
         {
-
         }
 
         public void Boot()
         {
             /* Register network handlers */
-            _network.OnClientConnecting += NetworkHandlers.OnClientConnecting;
-            _network.OnClientConnected += NetworkHandlers.OnClientConnected;
-            _network.OnReceiveData += NetworkHandlers.OnReceiveData;
-            _network.OnClientDisconnecting += NetworkHandlers.OnClientDisconnecting;
-            _network.OnClientDisconnected += NetworkHandlers.OnClientDisconnected;
+            this._network.OnClientConnecting += NetworkHandlers.OnClientConnecting;
+            this._network.OnClientConnected += NetworkHandlers.OnClientConnected;
+            this._network.OnReceiveData += NetworkHandlers.OnReceiveData;
+            this._network.OnClientDisconnecting += NetworkHandlers.OnClientDisconnecting;
+            this._network.OnClientDisconnected += NetworkHandlers.OnClientDisconnected;
+
+            /* Start listening */
+            this._network.Startup();
         }
 
         public void Shutdown()
         {
+            /* Stop listening */
+            this._network.Shutdown();
+
             /* Unregister network handlers */
-            _network.OnClientConnecting -= NetworkHandlers.OnClientConnecting;
-            _network.OnClientConnected -= NetworkHandlers.OnClientConnected;
-            _network.OnReceiveData -= NetworkHandlers.OnReceiveData;
-            _network.OnClientDisconnecting -= NetworkHandlers.OnClientDisconnecting;
-            _network.OnClientDisconnected -= NetworkHandlers.OnClientDisconnected;
+            this._network.OnClientConnecting -= NetworkHandlers.OnClientConnecting;
+            this._network.OnClientConnected -= NetworkHandlers.OnClientConnected;
+            this._network.OnReceiveData -= NetworkHandlers.OnReceiveData;
+            this._network.OnClientDisconnecting -= NetworkHandlers.OnClientDisconnecting;
+            this._network.OnClientDisconnected -= NetworkHandlers.OnClientDisconnected;
         }
 
         public void Tick(TimeSpan timeSinceLastTick)

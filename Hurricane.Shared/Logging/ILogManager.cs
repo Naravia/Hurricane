@@ -5,7 +5,8 @@ namespace Hurricane.Shared.Logging
 {
     public interface ILogManager : IHurricaneObject
     {
-        ILogger GetLoggerByType(LoggerTypeEnum loggerType);
         ILogger GetLoggerByGuid(Guid guid);
+        ILogger RegisterLogger(ILogger logger);
+        void UnregisterLogger(Guid loggerType);
     }
 }

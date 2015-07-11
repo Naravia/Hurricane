@@ -17,11 +17,11 @@ namespace Hurricane.Shared.Logging
         Boolean ErrorOutputEnabled { get; set; }
         Boolean FatalOutputEnabled { get; set; }
 
-        String WriteTrace(String line, params Object[] parameters);
-        String WriteDebug(String line, params Object[] parameters);
-        String WriteInfo(String line, params Object[] parameters);
-        String WriteWarning(String line, params Object[] parameters);
-        String WriteError(String line, params Object[] parameters);
-        String WriteFatal(String line, params Object[] parameters);
+        String WriteTrace(Guid sender, String line, params Object[] parameters);
+        String WriteDebug(Guid sender, String line, params Object[] parameters);
+        String WriteInfo(Guid sender, String line, params Object[] parameters);
+        String WriteWarning(Guid sender, String line, params Object[] parameters);
+        String WriteError(Guid sender, String line, params Object[] parameters);
+        String WriteFatal(Guid sender, String line, params Object[] parameters);
     }
 }

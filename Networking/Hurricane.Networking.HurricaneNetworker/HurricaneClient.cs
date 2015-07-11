@@ -1,30 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using Hurricane.Shared.Networking;
 
 namespace Hurricane.Networking.HurricaneNetworker
 {
-    class HurricaneClient : INetworkClient
+    internal class HurricaneClient : INetworkClient
     {
-        public IPAddress ClientIpAddress {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        private TcpClient _client;
-
         public HurricaneClient(TcpClient client)
         {
-            ObjectGuid = Guid.NewGuid();
-            _client = client;
+            this.ObjectGuid = Guid.NewGuid();
+            this.Client = client;
         }
+
+        public TcpClient Client { get; private set; }
 
         public void SendPacket(INetworkPacket packet)
         {

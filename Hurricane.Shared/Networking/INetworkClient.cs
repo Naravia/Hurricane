@@ -6,8 +6,6 @@ namespace Hurricane.Shared.Networking
 {
     public interface INetworkClient : IHurricaneObject
     {
-        IPAddress ClientIpAddress { get; }
-
         void SendPacket(INetworkPacket packet);
     }
 }

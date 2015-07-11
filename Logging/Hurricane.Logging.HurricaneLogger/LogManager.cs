@@ -7,36 +7,29 @@ namespace Hurricane.Logging.HurricaneLogger
 {
     public class LogManager : ILogManager
     {
-        private readonly Dictionary<LoggerTypeEnum, ILogger> _loggers = new Dictionary<LoggerTypeEnum, ILogger>();
+        private readonly Dictionary<Guid, ILogger> _loggers = new Dictionary<Guid, ILogger>();
 
         public LogManager()
         {
             ObjectGuid = Guid.NewGuid();
         }
 
-        public ILogger GetLoggerByType(LoggerTypeEnum loggerType)
-        {
-            return _loggers.ContainsKey(loggerType) ? _loggers[loggerType] : null;
-        }
-
         public ILogger GetLoggerByGuid(Guid guid)
         {
-            return (from logger in _loggers
-                where logger.Value.ObjectGuid == guid
-                select logger.Value).FirstOrDefault();
+            return _loggers.ContainsKey(guid) ? _loggers[guid] : null;
+        }
+
+        public ILogger RegisterLogger(ILogger logger)
+        {
+            _loggers.Add(key: logger.ObjectGuid, value: logger);
+            return logger;
         }
 
         public Guid ObjectGuid { get; private set; }
 
-        public ILogger RegisterLogger(LoggerTypeEnum loggerType, ILogger logger)
+        public void UnregisterLogger(Guid guid)
         {
-            _loggers.Add(key: loggerType, value: logger);
-            return logger;
-        }
-
-        public void UnregisterLogger(LoggerTypeEnum loggerType)
-        {
-            _loggers.Remove(loggerType);
+            _loggers.Remove(guid);
         }
     }
 }

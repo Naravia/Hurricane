@@ -44,6 +44,7 @@
     <Compile Include="HurricaneNetworkHandler.cs" />
     <Compile Include="HurricaneNetworkInterface.cs" />
     <Compile Include="HurricanePacket.cs" />
+    <Compile Include="PacketFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
