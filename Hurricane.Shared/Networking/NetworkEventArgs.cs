@@ -10,5 +10,6 @@ namespace Hurricane.Shared.Networking
     {
         public INetworkClient Client;
         public NetworkEventEnum NetworkEvent;
+        public Boolean Cancel;
     }
 }

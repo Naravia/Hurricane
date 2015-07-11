@@ -40,6 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ILogManager.cs" />
+    <Compile Include="Logging\LoggerTypeEnum.cs" />
+    <Compile Include="Networking\INetworkClient.cs" />
+    <Compile Include="Networking\INetworkHandler.cs" />
+    <Compile Include="Networking\INetworkInterface.cs" />
+    <Compile Include="Networking\INetworkPacket.cs" />
+    <Compile Include="Networking\NetworkEventArgs.cs" />
+    <Compile Include="Networking\NetworkEventEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

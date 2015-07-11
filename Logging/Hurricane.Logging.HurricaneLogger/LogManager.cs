@@ -1,36 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Hurricane.Shared.Logging;
 
 namespace Hurricane.Logging.HurricaneLogger
 {
-    public static class LogManager
+    public class LogManager : ILogManager
     {
-        private static Dictionary<Guid, Logger> _loggers = new Dictionary<Guid, Logger>();
+        private readonly Dictionary<LoggerTypeEnum, ILogger> _loggers = new Dictionary<LoggerTypeEnum, ILogger>();
 
-        public static ILogger RegisterLogger(String name, TextWriter output, Boolean traceEnabled = true,
-            Boolean debugEnabled = true, Boolean infoEnabled = true, Boolean warningEnabled = true,
-            Boolean errorEnabled = true, Boolean fatalEnabled = true)
+        public LogManager()
         {
-            var guid = Guid.NewGuid();
-            var logger = new Logger(name: name, guid: guid, output: output,
-                traceEnabled: traceEnabled, debugEnabled: debugEnabled, infoEnabled: infoEnabled,
-                warningEnabled: warningEnabled, errorEnabled: errorEnabled, fatalEnabled: fatalEnabled);
-            
-            _loggers.Add(key: guid, value: logger);
+            LogManagerGuid = Guid.NewGuid();
+        }
+
+        public Guid LogManagerGuid { get; private set; }
+
+        public ILogger GetLoggerByType(LoggerTypeEnum loggerType)
+        {
+            return _loggers.ContainsKey(loggerType) ? _loggers[loggerType] : null;
+        }
+
+        public ILogger GetLoggerByGuid(Guid guid)
+        {
+            return (from logger in _loggers
+                where logger.Value.LoggerGuid == guid
+                select logger.Value).FirstOrDefault();
+        }
+
+        public ILogger RegisterLogger(LoggerTypeEnum loggerType, ILogger logger)
+        {
+            _loggers.Add(key: loggerType, value: logger);
             return logger;
         }
 
-        public static ILogger GetLogger(Guid loggerGuid)
+        public void UnregisterLogger(LoggerTypeEnum loggerType)
         {
-            if (_loggers.ContainsKey(loggerGuid))
-                return _loggers[loggerGuid];
-
-            throw new KeyNotFoundException(String.Format("Logged with GUID [{0}] has not been registered (and probably doesn't exist)", loggerGuid));
+            _loggers.Remove(loggerType);
         }
     }
 }

@@ -1,10 +1,21 @@
 ﻿using System;
+using System.IO;
 
 namespace Hurricane.Shared.Logging
 {
     public interface ILogger
     {
-        Guid GetLoggerGuid();
+        Guid LoggerGuid { get; }
+        TextWriter Output { get; set; }
+
+        Boolean LoggerEnabled { get; set; }
+
+        Boolean TraceOutputEnabled { get; set; }
+        Boolean DebugOutputEnabled { get; set; }
+        Boolean InfoOutputEnabled { get; set; }
+        Boolean WarningOutputEnabled { get; set; }
+        Boolean ErrorOutputEnabled { get; set; }
+        Boolean FatalOutputEnabled { get; set; }
 
         String WriteTrace(String line, params Object[] parameters);
         String WriteDebug(String line, params Object[] parameters);
@@ -12,19 +23,5 @@ namespace Hurricane.Shared.Logging
         String WriteWarning(String line, params Object[] parameters);
         String WriteError(String line, params Object[] parameters);
         String WriteFatal(String line, params Object[] parameters);
-
-        void EnableTrace();
-        void EnableDebug();
-        void EnableInfo();
-        void EnableWarning();
-        void EnableError();
-        void EnableFatal();
-
-        void DisableTrace();
-        void DisableDebug();
-        void DisableInfo();
-        void DisableWarning();
-        void DisableError();
-        void DisableFatal();
     }
 }

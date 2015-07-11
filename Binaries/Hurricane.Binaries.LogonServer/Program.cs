@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using Hurricane.Logging.HurricaneLogger;
+using Hurricane.Shared.Logging;
 
 namespace Hurricane.Binaries.LogonServer
 {
@@ -9,14 +10,14 @@ namespace Hurricane.Binaries.LogonServer
     {
         static void Main(String[] args)
         {
+            var logManager = new LogManager();
+
             /* File logging not supported yet, so create a dummy logger */
-            var fileLogger = LogManager.RegisterLogger(name: "LogonServer", output: TextWriter.Null, traceEnabled: false,
-                debugEnabled: false, infoEnabled: false, warningEnabled: false,
-                errorEnabled: false, fatalEnabled: false);
-            var consoleLogger = LogManager.RegisterLogger(name: "LogonServer", output: Console.Out);
+            var fileLogger = logManager.RegisterLogger(LoggerTypeEnum.FileLogger, new Logger(sourceName: "LogonServer", output: TextWriter.Null, loggerEnabled: false));
+            var consoleLogger = logManager.RegisterLogger(LoggerTypeEnum.CLILogger, new Logger(sourceName: "LogonServer", output: Console.Out));
 
             /* Config not supported yet */
-            consoleLogger.DisableTrace();
+            consoleLogger.TraceOutputEnabled = false;
 
             var startupTime = DateTime.Now;
 
@@ -26,7 +27,7 @@ namespace Hurricane.Binaries.LogonServer
             var finishTime = DateTime.Now;
 
             var runTime = finishTime - startupTime;
-            consoleLogger.WriteInfo("LogonServer ran successfully! Runtime: {0}d{1}h{2}m{3}s{4}ms", runTime.Days, runTime.Hours, runTime.Minutes, runTime.Seconds, runTime.Milliseconds);
+            logManager.GetLoggerByType(LoggerTypeEnum.CLILogger).WriteInfo("LogonServer ran successfully! Runtime: {0}d{1}h{2}m{3}s{4}ms", runTime.Days, runTime.Hours, runTime.Minutes, runTime.Seconds, runTime.Milliseconds);
 
             var shutdownTime = 5;
             consoleLogger.WriteInfo("Shutdown in {0} seconds", shutdownTime);
