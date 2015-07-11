@@ -5,6 +5,20 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane", "Hurricane.csproj", "{EAE53011-CEAB-433F-B976-34C785CCBF30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Shared", "..\Hurricane.Shared\Hurricane.Shared.csproj", "{E0BC7046-1D06-4306-A028-383C35DB4092}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binaries", "Binaries", "{C174EEEB-DB46-4B2D-A86E-827AB0FC4096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Binaries.LogonServer", "..\Binaries\Hurricane.Binaries.LogonServer\Hurricane.Binaries.LogonServer.csproj", "{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{2646A9E6-AD39-4D5B-85FA-FE2018480397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Logging.HurricaneLogger", "..\Logging\Hurricane.Logging.HurricaneLogger\Hurricane.Logging.HurricaneLogger.csproj", "{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{364F1197-637A-4544-9048-513360FCBA4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hurricane.Components.LogonServer", "..\Components\Hurricane.Components.LogonServer\Hurricane.Components.LogonServer.csproj", "{04234DE4-062A-43D8-B758-D1A3937C4ED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +29,29 @@ Global
 		{EAE53011-CEAB-433F-B976-34C785CCBF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAE53011-CEAB-433F-B976-34C785CCBF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAE53011-CEAB-433F-B976-34C785CCBF30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BC7046-1D06-4306-A028-383C35DB4092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BC7046-1D06-4306-A028-383C35DB4092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BC7046-1D06-4306-A028-383C35DB4092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BC7046-1D06-4306-A028-383C35DB4092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04234DE4-062A-43D8-B758-D1A3937C4ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04234DE4-062A-43D8-B758-D1A3937C4ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04234DE4-062A-43D8-B758-D1A3937C4ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04234DE4-062A-43D8-B758-D1A3937C4ED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC6FE047-FB2E-4699-A2FA-E8DBBEF0D1B7} = {C174EEEB-DB46-4B2D-A86E-827AB0FC4096}
+		{D2A38B56-0257-4D55-9666-DDDB4C1AD3F3} = {2646A9E6-AD39-4D5B-85FA-FE2018480397}
+		{04234DE4-062A-43D8-B758-D1A3937C4ED6} = {364F1197-637A-4544-9048-513360FCBA4C}
 	EndGlobalSection
 EndGlobal
