@@ -11,7 +11,7 @@ namespace Hurricane.Components.Logon.DevLogonClient
             this.ObjectGuid = Guid.NewGuid();
         }
 
-        public LogonClient(INetworkClient client)
+        public LogonClient(INetworkClient client) : this()
         {
             this.BaseClient = client;
         }

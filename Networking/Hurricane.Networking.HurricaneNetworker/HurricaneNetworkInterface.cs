@@ -71,6 +71,8 @@ namespace Hurricane.Networking.DevNetworker
 
         private async void ListenerLoop()
         {
+            this.Running = true;
+
             do
             {
                 var client = await this._listener.AcceptTcpClientAsync();
@@ -145,7 +147,7 @@ namespace Hurricane.Networking.DevNetworker
             }
         }
 
-        private async void FireOnClientConnect(TcpClient client)
+        private async Task FireOnClientConnect(TcpClient client)
         {
             if (this.OnClientConnecting == null)
                 throw new NotImplementedException("No handler registered for OnClientConnecting");
