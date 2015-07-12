@@ -2,7 +2,7 @@
 using Hurricane.Shared.Components.Logon.Interfaces;
 using Hurricane.Shared.Networking.Interfaces;
 
-namespace Hurricane.Components.Logon.LogonClient
+namespace Hurricane.Components.Logon.DevLogonClient
 {
     public class LogonClientFactory : ILogonClientFactory
     {

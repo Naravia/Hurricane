@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8F9D14F-12F5-4D3F-9F04-4412F7B43FD3}</ProjectGuid>
+    <ProjectGuid>{31FD7581-2801-482D-BBCC-6A319F46C020}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hurricane.Networking.HurricaneNetworker</RootNamespace>
-    <AssemblyName>Hurricane.Networking.HurricaneNetworker</AssemblyName>
+    <RootNamespace>Hurricane.Networking.IPC.DevIPCInterface.TCP</RootNamespace>
+    <AssemblyName>DevIPCInterface.TCP</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,17 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="HurricaneClient.cs" />
-    <Compile Include="HurricaneNetworker.cs" />
-    <Compile Include="HurricaneNetworkHandler.cs" />
-    <Compile Include="HurricaneNetworkInterface.cs" />
-    <Compile Include="HurricanePacket.cs" />
-    <Compile Include="PacketFactory.cs" />
+    <Compile Include="IPCInterface.cs" />
+    <Compile Include="IPCInternalRouter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
+    <ProjectReference Include="..\..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>
     </ProjectReference>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hurricane.Networking.HurricaneNetworker.Extensions
+namespace Hurricane.Networking.DevNetworker.Extensions
 {
     public static class StringExtensions
     {

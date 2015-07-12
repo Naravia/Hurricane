@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04234DE4-062A-43D8-B758-D1A3937C4ED6}</ProjectGuid>
+    <ProjectGuid>{F0CE791E-5501-43A6-9665-23836B70326A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hurricane.Components.Logon.LogonServer</RootNamespace>
-    <AssemblyName>Hurricane.Components.Logon.LogonServer</AssemblyName>
+    <RootNamespace>Hurricane.Objects.DevObjectManager</RootNamespace>
+    <AssemblyName>DevObjectManager</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,12 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogonServer.cs" />
-    <Compile Include="Networking\NetworkHandlers.cs" />
+    <Compile Include="ObjectManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Hurricane.Shared\Hurricane.Shared.csproj">
+    <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>
     </ProjectReference>

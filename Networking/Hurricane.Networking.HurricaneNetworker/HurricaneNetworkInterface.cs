@@ -7,7 +7,7 @@ using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking;
 using Hurricane.Shared.Networking.Interfaces;
 
-namespace Hurricane.Networking.HurricaneNetworker
+namespace Hurricane.Networking.DevNetworker
 {
     public class HurricaneNetworkInterface : INetworkInterface
     {

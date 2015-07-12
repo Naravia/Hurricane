@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Net;
 using System.Threading;
-using Hurricane.Components.HurricaneTicker;
-using Hurricane.Components.Logon.LogonClient;
-using Hurricane.Components.Logon.TBCPacketHandler;
-using Hurricane.Logging.HurricaneLogger;
-using Hurricane.Networking.HurricaneNetworker;
+using Hurricane.Components.DevHurricaneTicker;
+using Hurricane.Components.Logon.DevLogonClient;
+using Hurricane.Components.Logon.DevTBCPacketHandler;
+using Hurricane.Logging.DevLogger;
+using Hurricane.Networking.DevNetworker;
+using Hurricane.Objects.DevObjectManager;
 using Hurricane.Shared.Components.Logon.Interfaces;
 using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking.Interfaces;
 using Hurricane.Shared.Objects.Interfaces;
-using HurricaneObjectManager;
 
 namespace Hurricane.Binaries.LogonServer
 {
@@ -34,7 +34,7 @@ namespace Hurricane.Binaries.LogonServer
             ILogonPacketFactory logonPacketFactory = new TBCLogonPacketFactory(log: consoleLogger);
             ILogonPacketHandler logonPacketHandler = new TBCPacketHandler(log: consoleLogger);
 
-            var logonServer = new Components.Logon.LogonServer.LogonServer(log: consoleLogger, network: networkManager,
+            var logonServer = new Components.Logon.DevLogonServer.LogonServer(log: consoleLogger, network: networkManager,
                 objectManager: logonClientManager, factory: logonClientFactory, packetFactory: packetFactory,
                 logonPacketFactory: logonPacketFactory,
                 logonPacketHandler: logonPacketHandler);

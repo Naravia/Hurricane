@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hurricane.Binaries.LogonServer</RootNamespace>
-    <AssemblyName>Hurricane.Binaries.LogonServer</AssemblyName>
+    <AssemblyName>LogonServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,37 +48,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Components\Hurricane.Components.HurricaneTicker\HurricaneTicker.csproj">
+    <ProjectReference Include="..\..\Components\Hurricane.Components.HurricaneTicker\DevHurricaneTicker.csproj">
       <Project>{4b9f8347-a08c-41cc-860b-4dbd9c466e00}</Project>
-      <Name>HurricaneTicker</Name>
+      <Name>DevHurricaneTicker</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.LogonClient\LogonClient.csproj">
+    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.LogonClient\DevLogonClient.csproj">
       <Project>{f3d6ba35-01c8-4e16-a740-e5e3bb346a7e}</Project>
-      <Name>LogonClient</Name>
+      <Name>DevLogonClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.LogonServer\LogonServer.csproj">
+    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.LogonServer\DevLogonServer.csproj">
       <Project>{04234de4-062a-43d8-b758-d1a3937c4ed6}</Project>
-      <Name>LogonServer</Name>
+      <Name>DevLogonServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.TBCPacketHandler\TBCPacketHandler.csproj">
+    <ProjectReference Include="..\..\Components\Logon\Hurricane.Components.Logon.TBCPacketHandler\DevTBCPacketHandler.csproj">
       <Project>{7f99f914-3cca-4619-9002-2edfaa1c6465}</Project>
-      <Name>TBCPacketHandler</Name>
+      <Name>DevTBCPacketHandler</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Logging\Hurricane.Logging.HurricaneLogger\HurricaneLogger.csproj">
+    <ProjectReference Include="..\..\Logging\Hurricane.Logging.HurricaneLogger\DevLogger.csproj">
       <Project>{d2a38b56-0257-4d55-9666-dddb4c1ad3f3}</Project>
-      <Name>HurricaneLogger</Name>
+      <Name>DevLogger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Networking\Hurricane.Networking.HurricaneNetworker\HurricaneNetworker.csproj">
+    <ProjectReference Include="..\..\Networking\Hurricane.Networking.HurricaneNetworker\DevNetworker.csproj">
       <Project>{c8f9d14f-12f5-4d3f-9f04-4412f7b43fd3}</Project>
-      <Name>HurricaneNetworker</Name>
+      <Name>DevNetworker</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Objects\HurricaneObjectManager\HurricaneObjectManager.csproj">
+    <ProjectReference Include="..\..\Objects\HurricaneObjectManager\DevObjectManager.csproj">
       <Project>{f0ce791e-5501-43a6-9665-23836b70326a}</Project>
-      <Name>HurricaneObjectManager</Name>
+      <Name>DevObjectManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

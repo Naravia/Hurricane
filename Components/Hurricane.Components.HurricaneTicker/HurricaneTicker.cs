@@ -4,7 +4,7 @@ using Hurricane.Shared.Components;
 using Hurricane.Shared.Logging.Interfaces;
 using Timer = System.Timers.Timer;
 
-namespace Hurricane.Components.HurricaneTicker
+namespace Hurricane.Components.DevHurricaneTicker
 {
     public class HurricaneTicker : IHurricaneTicker
     {

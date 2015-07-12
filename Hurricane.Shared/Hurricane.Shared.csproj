@@ -39,8 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Account\Interfaces\IAccountManager.cs" />
+    <Compile Include="Components\Account\Interfaces\IAccountRequest.cs" />
+    <Compile Include="Components\Account\Interfaces\IAccountResult.cs" />
+    <Compile Include="Components\ComponentStatusEnum.cs" />
+    <Compile Include="Components\ComponentTypeEnum.cs" />
     <Compile Include="Components\IHurricaneComponent.cs" />
     <Compile Include="Components\IHurricaneTicker.cs" />
+    <Compile Include="Components\IInternalServer.cs" />
     <Compile Include="Components\Logon\GameLocaleEnum.cs" />
     <Compile Include="Components\Logon\GameVersionStruct.cs" />
     <Compile Include="Components\Logon\Interfaces\ILogonClient.cs" />
@@ -51,6 +57,7 @@
     <Compile Include="Components\Logon\IPv4AddressStruct.cs" />
     <Compile Include="Components\Logon\LogonPacketOpcodeEnum.cs" />
     <Compile Include="Components\Logon\Packets\IPacketAuthLogonChallenge.cs" />
+    <Compile Include="Components\Router\Interfaces\IHurricaneRouter.cs" />
     <Compile Include="Logging\Interfaces\ILogger.cs" />
     <Compile Include="Logging\Interfaces\ILogManager.cs" />
     <Compile Include="Networking\Interfaces\INetworkClient.cs" />
@@ -58,11 +65,26 @@
     <Compile Include="Networking\Interfaces\INetworkInterface.cs" />
     <Compile Include="Networking\Interfaces\INetworkPacket.cs" />
     <Compile Include="Networking\Interfaces\IPacketFactory.cs" />
+    <Compile Include="Networking\IPC\Packets\GetStatus\GetStatusEventArgs.cs" />
+    <Compile Include="Networking\IPC\Packets\RegisterComponentResponse\RegisterComponentResponseEventArgs.cs" />
+    <Compile Include="Networking\IPC\Packets\RegisterComponent\RegisterComponentEventArgs.cs" />
+    <Compile Include="Networking\IPC\Interfaces\IIPCHandler.cs" />
+    <Compile Include="Networking\IPC\Interfaces\IIPCInterface.cs" />
+    <Compile Include="Networking\IPC\Interfaces\IIPCMessage.cs" />
+    <Compile Include="Networking\IPC\Interfaces\IIPCMessageFactory.cs" />
+    <Compile Include="Networking\IPC\Interfaces\IIPCSerialiser.cs" />
+    <Compile Include="Networking\IPC\Interfaces\IIPCProtocol.cs" />
+    <Compile Include="Networking\IPC\IPCEventArgs.cs" />
+    <Compile Include="Networking\IPC\IPCOpcodeEnum.cs" />
     <Compile Include="Networking\NetworkEventArgs.cs" />
     <Compile Include="Objects\Interfaces\IHurricaneObject.cs" />
     <Compile Include="Objects\Interfaces\IHurricaneObjectManager.cs" />
     <Compile Include="Objects\Interfaces\IOutput.cs" />
+    <Compile Include="Objects\Interfaces\ISerialiser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Networking\IPC\EventArgs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

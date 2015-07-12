@@ -1,7 +1,7 @@
 ﻿using System;
 using Hurricane.Shared.Networking.Interfaces;
 
-namespace Hurricane.Networking.HurricaneNetworker
+namespace Hurricane.Networking.DevNetworker
 {
     public class PacketFactory : IPacketFactory
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Hurricane.Shared.Objects.Interfaces;
 
-namespace HurricaneObjectManager
+namespace Hurricane.Objects.DevObjectManager
 {
     public class ObjectManager : IHurricaneObjectManager
     {

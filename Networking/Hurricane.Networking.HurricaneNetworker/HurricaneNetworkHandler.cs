@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking.Interfaces;
 
-namespace Hurricane.Networking.HurricaneNetworker
+namespace Hurricane.Networking.DevNetworker
 {
     internal class HurricaneNetworkHandler : INetworkHandler
     {

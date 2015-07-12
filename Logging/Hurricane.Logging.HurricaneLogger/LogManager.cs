@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Hurricane.Shared.Logging.Interfaces;
 
-namespace Hurricane.Logging.HurricaneLogger
+namespace Hurricane.Logging.DevLogger
 {
     public class LogManager : ILogManager
     {

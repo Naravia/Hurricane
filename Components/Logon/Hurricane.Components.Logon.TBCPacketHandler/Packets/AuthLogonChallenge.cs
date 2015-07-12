@@ -1,7 +1,7 @@
 ﻿using System;
 using Hurricane.Shared.Components.Logon;
 
-namespace Hurricane.Components.Logon.TBCPacketHandler.Packets
+namespace Hurricane.Components.Logon.DevTBCPacketHandler.Packets
 {
     public struct AuthLogonChallenge
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hurricane.Components.HurricaneTicker
+namespace Hurricane.Components.DevHurricaneTicker
 {
     internal static class TimeSpanExtensions
     {

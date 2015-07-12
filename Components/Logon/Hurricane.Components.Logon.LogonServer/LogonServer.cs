@@ -1,12 +1,12 @@
 ﻿using System;
-using Hurricane.Components.Logon.LogonServer.Networking;
+using Hurricane.Components.Logon.DevLogonServer.Networking;
 using Hurricane.Shared.Components;
 using Hurricane.Shared.Components.Logon.Interfaces;
 using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking.Interfaces;
 using Hurricane.Shared.Objects.Interfaces;
 
-namespace Hurricane.Components.Logon.LogonServer
+namespace Hurricane.Components.Logon.DevLogonServer
 {
     public class LogonServer : IHurricaneComponent
     {

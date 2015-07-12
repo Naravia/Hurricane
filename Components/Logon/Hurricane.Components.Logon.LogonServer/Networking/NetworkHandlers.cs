@@ -4,7 +4,7 @@ using Hurricane.Shared.Components.Logon;
 using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking;
 
-namespace Hurricane.Components.Logon.LogonServer.Networking
+namespace Hurricane.Components.Logon.DevLogonServer.Networking
 {
     public static class NetworkHandlers
     {

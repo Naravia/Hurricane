@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F99F914-3CCA-4619-9002-2EDFAA1C6465}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{D335370C-50AF-4CF7-8909-71439B92BCCC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hurricane.Components.Logon.TBCPacketHandler</RootNamespace>
-    <AssemblyName>Hurricane.Components.Logon.TBCPacketHandler</AssemblyName>
+    <RootNamespace>Hurricane.Binaries.RoutingServer</RootNamespace>
+    <AssemblyName>RoutingServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,17 +41,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Packets\AuthLogonChallenge.cs" />
-    <Compile Include="Packets\AuthLogonChallengeHandler.cs" />
-    <Compile Include="TBCLogonPacket.cs" />
-    <Compile Include="TBCLogonPacketFactory.cs" />
-    <Compile Include="TBCPacketHandler.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Hurricane.Shared\Hurricane.Shared.csproj">
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Components\Routing\RoutingServer\DevRoutingServer.csproj">
+      <Project>{567c0860-b0ae-4dc0-a0bf-25de58b79635}</Project>
+      <Name>DevRoutingServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Logging\Hurricane.Logging.HurricaneLogger\DevLogger.csproj">
+      <Project>{d2a38b56-0257-4d55-9666-dddb4c1ad3f3}</Project>
+      <Name>DevLogger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Networking\Hurricane.Networking.HurricaneNetworker\DevNetworker.csproj">
+      <Project>{c8f9d14f-12f5-4d3f-9f04-4412f7b43fd3}</Project>
+      <Name>DevNetworker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Networking\IPC\IPCHandler\DevIPCHandler.csproj">
+      <Project>{d71b6be7-71b8-4bab-a9f0-178a11eae956}</Project>
+      <Name>DevIPCHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Networking\IPC\IPCInterface.TCP\DevIPCInterface.TCP.csproj">
+      <Project>{31fd7581-2801-482d-bbcc-6a319f46c020}</Project>
+      <Name>DevIPCInterface.TCP</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

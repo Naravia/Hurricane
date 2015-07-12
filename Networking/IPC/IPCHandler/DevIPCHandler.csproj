@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F0CE791E-5501-43A6-9665-23836B70326A}</ProjectGuid>
+    <ProjectGuid>{D71B6BE7-71B8-4BAB-A9F0-178A11EAE956}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HurricaneObjectManager</RootNamespace>
-    <AssemblyName>HurricaneObjectManager</AssemblyName>
+    <RootNamespace>Hurricane.Networking.IPC.DevIPCHandler</RootNamespace>
+    <AssemblyName>DevIPCHandler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,11 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjectManager.cs" />
+    <Compile Include="IPCHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Hurricane.Shared\Hurricane.Shared.csproj">
+    <ProjectReference Include="..\..\..\Hurricane.Shared\Hurricane.Shared.csproj">
       <Project>{e0bc7046-1d06-4306-a028-383c35db4092}</Project>
       <Name>Hurricane.Shared</Name>
     </ProjectReference>

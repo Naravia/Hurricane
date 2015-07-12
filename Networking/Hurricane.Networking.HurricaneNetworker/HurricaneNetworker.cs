@@ -1,4 +1,4 @@
-﻿namespace Hurricane.Networking.HurricaneNetworker
+﻿namespace Hurricane.Networking.DevNetworker
 {
     public class HurricaneNetworker
     {

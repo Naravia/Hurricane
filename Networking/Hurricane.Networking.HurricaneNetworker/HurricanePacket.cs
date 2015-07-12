@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using Hurricane.Networking.HurricaneNetworker.Extensions;
+using Hurricane.Networking.DevNetworker.Extensions;
 using Hurricane.Shared.Networking.Interfaces;
 
-namespace Hurricane.Networking.HurricaneNetworker
+namespace Hurricane.Networking.DevNetworker
 {
     internal class HurricanePacket : INetworkPacket
     {

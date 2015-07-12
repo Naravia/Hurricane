@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking.Interfaces;
 
-namespace Hurricane.Networking.HurricaneNetworker
+namespace Hurricane.Networking.DevNetworker
 {
     internal class HurricaneClient : INetworkClient
     {
@@ -19,6 +19,11 @@ namespace Hurricane.Networking.HurricaneNetworker
         public void SendPacket(INetworkPacket packet)
         {
             throw new NotImplementedException();
+        }
+
+        public void SendData(Byte[] data)
+        {
+            this.Client.GetStream().Write(data, 0, data.Length);
         }
 
         public Guid ObjectGuid { get; private set; }
