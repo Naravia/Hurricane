@@ -1,4 +1,5 @@
 ﻿using System;
+using Hurricane.Shared.Components.Logon.Interfaces;
 using Hurricane.Shared.Components.Logon.Packets;
 using Hurricane.Shared.Logging.Interfaces;
 using Hurricane.Shared.Networking.Interfaces;

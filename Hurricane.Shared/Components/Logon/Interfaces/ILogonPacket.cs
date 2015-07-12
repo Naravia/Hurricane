@@ -2,7 +2,7 @@
 using Hurricane.Shared.Networking.Interfaces;
 using Hurricane.Shared.Objects.Interfaces;
 
-namespace Hurricane.Shared.Components.Logon.Packets
+namespace Hurricane.Shared.Components.Logon.Interfaces
 {
     public interface ILogonPacket : INetworkPacket, IOutput
     {

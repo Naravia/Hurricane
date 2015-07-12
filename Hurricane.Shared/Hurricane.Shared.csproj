@@ -45,7 +45,7 @@
     <Compile Include="Components\Logon\GameVersionStruct.cs" />
     <Compile Include="Components\Logon\Interfaces\ILogonClient.cs" />
     <Compile Include="Components\Logon\Interfaces\ILogonClientFactory.cs" />
-    <Compile Include="Components\Logon\Packets\ILogonPacket.cs" />
+    <Compile Include="Components\Logon\Interfaces\ILogonPacket.cs" />
     <Compile Include="Components\Logon\Interfaces\ILogonPacketFactory.cs" />
     <Compile Include="Components\Logon\Interfaces\ILogonPacketHandler.cs" />
     <Compile Include="Components\Logon\IPv4AddressStruct.cs" />

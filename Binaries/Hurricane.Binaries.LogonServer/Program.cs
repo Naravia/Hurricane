@@ -52,7 +52,7 @@ namespace Hurricane.Binaries.LogonServer
             {
                 /* Idle */
                 var runTime = logonTicker.RunningTime;
-                Console.Title = String.Format("LogonServer - Runtime: {0}d{1}h{2}m{3}s{4}ms - Average Tick: {5}ms",
+                Console.Title = String.Format("LogonServer - Runtime: {0:00}d{1:00}h{2:00}m{3:00}s{4:000}ms - Average Tick: {5}ms",
                     runTime.Days,
                     runTime.Hours, runTime.Minutes, runTime.Seconds, runTime.Milliseconds, logonTicker.AverageTick.TotalMilliseconds);
                 Thread.Sleep(27);

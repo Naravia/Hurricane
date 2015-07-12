@@ -1,5 +1,6 @@
 ﻿using System;
 using Hurricane.Shared.Components.Logon;
+using Hurricane.Shared.Components.Logon.Interfaces;
 using Hurricane.Shared.Components.Logon.Packets;
 
 namespace Hurricane.Components.Logon.TBCPacketHandler.Packets
